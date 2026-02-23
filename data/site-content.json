@@ -408,7 +408,7 @@
         "org": "Credit Suisse",
         "accent": "--c1",
         "bullets": [
-          "Built analytics tools for trade and deal flow data; mentored interns."
+          "Built analytics tools for financial trade and deal flow data; managed and mentored interns."
         ],
         "tags": [
           "Analytics",
@@ -550,7 +550,9 @@
         "org": "PlanGrid",
         "accent": "--c1",
         "bullets": [
-          "Led core web products and built ML-driven extraction/classification for construction workflows."
+          "Team lead for a pod of four engineers owning core web products for blueprint and document management.",
+          "Designed and built ML-driven data extraction and classification product for construction submittals.",
+          "Owned core data services supporting  document and blueprint ingestion for PlanGrid's flagship product."
         ],
         "tags": [
           "Web",
@@ -621,7 +623,10 @@
         "org": "GM Cruise",
         "accent": "--c2",
         "bullets": [
-          "Led HD map tooling architecture and automation; shipped git-for-maps style versioned workflows."
+          "Senior technical leader on Maps Engineering Cartographer team, owning platform architecture, core systems design, and technical direction for the geospatial HD map labeling and visualization platform.",
+          "Led architecture and development of map labeling tools, workflow automation, validation pipelines, and geospatial APIs supporting large-scale map production.",
+          "Replaced 100% of manual map labeling workflows with a scalable, workflow-based application, enabling offshore operations and improving map update SLAs from quarterly to hourly update cycles.",
+          "Designed a version-controlled “git-for-maps” system enabling secure parallelization and scaling of geospatial editing, traceability, and map update release cycles."
         ],
         "tags": [
           "Geospatial",
@@ -645,7 +650,13 @@
         "org": "GM Cruise",
         "accent": "--c2",
         "bullets": [
-          "Managed distributed team and roadmap for geospatial visualization + map-labeling systems."
+          "Managed a globally distributed team of seven engineers in Maps Engineering.",
+          "Led the Cartographer platform roadmap for scaling geospatial visualization and map-labeling workflows.",
+          "Drove improvements in organizational level KPI’s focused on map labeling  throughput and freshness.",
+          "Owned products & data services supporting geospatial data insights and web experiences, including:",
+          "Core SPA for 2D map data search, visualization, and editing of HD map data.",
+          "3D point cloud viewer & editor, with dynamic, high performance data loading.",
+          "Robust labeling operations management tools to maintain complex mapping workflows."
         ],
         "tags": [
           "Engineering Management",
@@ -716,7 +727,12 @@
         "org": "Labelbox",
         "accent": "--c1",
         "bullets": [
-          "Built and scaled Active Learning team; established org practices for planning/execution/hiring."
+          "Started and grew the Active Learning engineering team to six engineers (four senior, two junior).",
+          "Led delivery of new products enabling model iteration, active learning, and error analysis workflows.",
+          "Owned annotation data ingestion services, enabling a 10× increase in scalable data import throughput.",
+          "Established company-wide engineering practices for planning, execution, and hiring.",
+          "Led recruiting and interviewing for 13+ hires across Labelbox Engineering.",
+          "Mentored and sponsored six engineers to promotions into senior and staff leadership roles."
         ],
         "tags": [
           "Team Building",
@@ -740,7 +756,10 @@
         "org": "Labelbox",
         "accent": "--c1",
         "bullets": [
-          "Scaled org from 6 to 15 engineers and led core Active Learning platform roadmap."
+          "Scaled the Labelbox Active Learning organization from 6 to 15 engineers across three teams.",
+          "Directly managed and developed engineering leaders, including EMs, tech leads, and staff engineers.",
+          "Defined team charters and multi-team roadmaps, aligning execution with company-level ML strategy.",
+          "Led development of core platform capabilities including search (structured \\+ embedding-based), model error analysis, and public APIs/SDKs."
         ],
         "tags": [
           "Org Scaling",
@@ -764,7 +783,11 @@
         "org": "Labelbox",
         "accent": "--c1",
         "bullets": [
-          "Expanded from labeling focus into model eval + data exploration; scaled org to 20 across 3 teams."
+          "Led strategic expansion from labeling-focused products to new ML product verticals, including model evaluation and data exploration workflows to improve the quality of model training iteration.",
+          "Scaled the Labelbox ‘Active Learning’ engineering org. to 20 across 3 teams, including 2 EMs.",
+          "Interviewed engineering managers for roles at a company level, leading to 4 hires across org.",
+          "Shaped engineering culture around personal ownership, results-oriented shipping discipline, rapid iteration, and architectural scalability.",
+          "Owned data ingestion, structured/unstructured search, model analysis, external APIs, and exports/ETL."
         ],
         "tags": [
           "Director",
@@ -836,8 +859,15 @@
         "org": "Concierge AI",
         "accent": "--c0",
         "bullets": [
-          "Led technical vision across multiple pivots and shipped products; scaled to paying customers and ARR.",
-          "Built LLM-powered platforms, hired senior/staff engineers, and raised $6M across two rounds."
+          "Led technical vision through two shipped products and multiple strategic pivots, using engagement, retention, and system metrics to assess PMF and guide high-conviction product decisions.",
+          "Launched Concierge AI, a B2B, agentic, embeddable chat platform for AI-driven customer education and higher-quality top-of-funnel sales engagement on SaaS marketing websites.",
+          "Began pilot in Dec 2025, scaling to sixteen trials with eight paying customers and five-figure ARR.",
+          "Shipped a complementary AI Engine Optimization (AEO) product providing visibility into brand performance within AI search and answer engines, with actionable improvement guidance.",
+          "Launched Centrifuse,  a conversational AI platform unifying 20+ third-party SaaS APIs into a single chat-based experience for cross-product querying and action.",
+          "Scaled B2C Centrifuse product to 13,500 users and a #2 ProductHunt launch, reaching 5-figure ARR.",
+          "Led architecture of a unified LLM tool-calling layer to rapidly scale third-party product support.",
+          "Recruited, interviewed, and hired five senior and staff-level engineers, building a high-ownership culture.",
+          "Raised $6MM across two rounds from top-tier VCs (incl. Gradient Ventures, Race Capital, Hitachi Ventures)."
         ],
         "tags": [
           "CTO",
