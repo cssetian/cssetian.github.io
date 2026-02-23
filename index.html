@@ -1,5 +1,486 @@
-<html>
-<title>cssetian</title>
-<h1>Welcome</h1>
-<p>Personal site for Chris Setian</p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>git log</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500&family=DM+Serif+Display:ital@0;1&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg:#0d0f12; --bg-card:#13161b; --bg-hover:#181c23;
+    --border:#1f2430; --border-lt:#2a3040;
+    --text-hi:#e8eaf0; --text-mid:#8892a4; --text-lo:#4a5568; --text-hash:#4fc3f7;
+    --c0:#7ee787; --c1:#d2a8ff; --c2:#ffa657; --c3:#79c0ff;
+    --font-mono:'JetBrains Mono', monospace;
+    --font-display:'DM Serif Display', serif;
+    --font-sans:'DM Sans', sans-serif;
+    --ease:cubic-bezier(0.16,1,0.3,1);
+  }
+
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--bg); color:var(--text-hi); font-family:var(--font-sans);
+    min-height:100vh; overflow-x:hidden; -webkit-font-smoothing:antialiased;
+  }
+  body::after{
+    content:''; position:fixed; inset:0; pointer-events:none; z-index:999; opacity:.3;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='.08'/%3E%3C/svg%3E");
+  }
+
+  header{
+    position:sticky; top:0; z-index:100; height:52px; padding:0 2rem;
+    display:flex; align-items:center; justify-content:space-between;
+    border-bottom:1px solid var(--border); background:rgba(13,15,18,.9); backdrop-filter:blur(14px);
+  }
+  .h-cmd{font-family:var(--font-mono);font-size:.74rem;color:var(--text-mid)}
+  .h-cmd .p{color:var(--c0)} .h-cmd .f{color:var(--c1)}
+  .h-nav{display:flex;align-items:center;gap:1.25rem}
+  .h-nav a{font-family:var(--font-mono);font-size:.7rem;color:var(--text-lo);text-decoration:none;transition:color .2s}
+  .h-nav a:hover{color:var(--text-hi)}
+  .h-nav .btn{padding:.3rem .8rem;border:1px solid var(--c0);color:var(--c0)!important;border-radius:4px;transition:background .2s!important}
+  .h-nav .btn:hover{background:rgba(126,231,135,.08)}
+
+  .hero{max-width:920px;margin:0 auto;padding:5rem 2rem 3rem;animation:fadeUp .8s var(--ease) both}
+  .hero-tag{font-family:var(--font-mono);font-size:.7rem;color:var(--c0);letter-spacing:.08em;text-transform:uppercase;margin-bottom:.9rem;opacity:.85}
+  .hero-name{font-family:var(--font-display);font-size:clamp(2.6rem,5.5vw,4.8rem);line-height:1.06;letter-spacing:-.02em}
+  .hero-name em{font-style:italic;color:var(--text-mid)}
+  .hero-meta{display:flex;flex-wrap:wrap;gap:1.25rem;margin-top:1.4rem}
+  .hero-meta span{font-family:var(--font-mono);font-size:.7rem;color:var(--text-lo)}
+  .hero-meta span b{color:var(--text-mid);font-weight:400}
+  .stats{display:flex;flex-wrap:wrap;gap:2rem;margin-top:2rem;padding-top:2rem;border-top:1px solid var(--border)}
+  .stat-v{font-family:var(--font-display);font-size:1.75rem;line-height:1}
+  .stat-l{font-family:var(--font-mono);font-size:.64rem;color:var(--text-lo);text-transform:uppercase;letter-spacing:.06em}
+
+  .sdiv{max-width:920px;margin:0 auto;padding:0 2rem}
+  .sdiv-inner{font-family:var(--font-mono);font-size:.65rem;color:var(--text-lo);text-transform:uppercase;letter-spacing:.1em;padding:1.2rem 0 .6rem;border-top:1px solid var(--border);display:flex;align-items:center;gap:.75rem}
+  .sdiv-inner::after{content:'';flex:1;height:1px;background:var(--border)}
+
+  .git-log{max-width:920px;margin:0 auto;padding:0 2rem 6rem}
+  .git-row{display:grid;grid-template-columns:var(--graph-col,56px) 1fr;align-items:start;position:relative;opacity:0;transform:translateY(14px);transition:opacity .45s var(--ease),transform .45s var(--ease)}
+  .git-row.vis{opacity:1;transform:none}
+  .graph-svg-wrap{position:relative}
+  .graph-svg-wrap svg{position:absolute;top:0;left:0;width:100%;height:100%;overflow:visible}
+
+  .commit-card{margin:4px 0 4px 14px;padding:.9rem 1.1rem;background:var(--bg-card);border:1px solid var(--border);border-radius:8px;cursor:pointer;transition:background .2s,border-color .2s;position:relative;overflow:hidden}
+  .commit-card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;border-radius:8px 0 0 8px;background:var(--accent,var(--c0));opacity:0;transition:opacity .2s}
+  .git-row:hover .commit-card{background:var(--bg-hover);border-color:var(--border-lt)}
+  .git-row:hover .commit-card::before{opacity:1}
+  .cc-head{display:flex;align-items:flex-start;justify-content:space-between;gap:.75rem}
+  .cc-title-wrap{display:flex;align-items:center;gap:.55rem;min-width:0}
+  .cc-title{font-family:var(--font-display);font-size:1rem;line-height:1.35}
+  .cc-badge{
+    font-family:var(--font-mono);
+    font-size:.58rem;
+    line-height:1;
+    letter-spacing:.05em;
+    text-transform:uppercase;
+    color:var(--text-mid);
+    border:1px solid var(--border-lt);
+    border-radius:999px;
+    padding:.2rem .45rem;
+    white-space:nowrap;
+    flex-shrink:0;
+  }
+  .cc-badge-role{
+    background:rgba(126,231,135,.22);
+    border-color:rgba(126,231,135,.7);
+    color:#dfffe5;
+  }
+  .cc-meta{display:flex;align-items:center;gap:.6rem;flex-shrink:0}
+  .cc-hash{font-family:var(--font-mono);font-size:.65rem;color:var(--text-hash);opacity:.55;transition:opacity .2s}
+  .git-row:hover .cc-hash{opacity:1}
+  .cc-date{font-family:var(--font-mono);font-size:.65rem;color:var(--text-lo)}
+  .cc-org{font-family:var(--font-mono);font-size:.68rem;color:var(--text-lo);margin:.3rem 0 0}
+  .cc-org b{color:var(--text-mid);font-weight:400}
+  .cc-body{max-height:0;overflow:hidden;opacity:0;transition:max-height .4s var(--ease),opacity .3s}
+  .git-row.open .cc-body{max-height:600px;opacity:1}
+  .cc-msg{font-size:.85rem;line-height:1.75;color:var(--text-mid);margin-top:.7rem;padding-top:.7rem;border-top:1px solid var(--border);list-style:none;display:flex;flex-direction:column;gap:.35rem}
+  .cc-msg li{display:flex;gap:.55rem;align-items:flex-start}
+  .cc-msg li::before{content:'·';color:var(--accent,var(--c0));font-family:var(--font-mono);flex-shrink:0;line-height:1.75}
+  .tags{display:flex;flex-wrap:wrap;gap:.35rem;margin-top:.7rem}
+  .tag{font-family:var(--font-mono);font-size:.6rem;padding:.18rem .45rem;border-radius:3px;border:1px solid var(--border-lt);color:var(--text-lo)}
+
+  .skills{max-width:920px;margin:0 auto;padding:0 2rem 2rem;display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:.9rem}
+  .sk-group{background:var(--bg-card);border:1px solid var(--border);border-radius:8px;padding:.9rem}
+  .sk-label{font-family:var(--font-mono);font-size:.62rem;color:var(--text-lo);text-transform:uppercase;letter-spacing:.08em;margin-bottom:.5rem}
+  .sk-chips{display:flex;flex-wrap:wrap;gap:.3rem}
+  .sk-chip{font-family:var(--font-mono);font-size:.65rem;color:var(--text-mid);padding:.14rem .42rem;background:var(--bg);border:1px solid var(--border);border-radius:3px}
+
+  footer{border-top:1px solid var(--border);padding:2rem;text-align:center}
+  .foot-inner{font-family:var(--font-mono);font-size:.65rem;color:var(--text-lo);display:flex;align-items:center;justify-content:center;gap:.9rem;flex-wrap:wrap}
+  .foot-inner a{color:var(--text-lo);text-decoration:none;transition:color .2s}
+  .foot-inner a:hover{color:var(--text-mid)}
+
+  @keyframes fadeUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+  @media(max-width:600px){
+    .hero-name{font-size:2.3rem}.stats{gap:1.25rem}.cc-head{flex-direction:column;gap:.2rem}
+    header,.git-log,.hero,.sdiv,.skills{padding-left:1rem;padding-right:1rem}
+    .h-nav a:not(.btn){display:none}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="h-cmd">
+    <span class="p" id="cmdPath">~/career</span>
+    <span style="color:var(--text-lo)"> $ </span>
+    <span id="cmdName">git log</span>
+    <span class="f" id="cmdFlags"> --all --graph --decorate</span>
+  </div>
+  <nav class="h-nav" id="headerNav"></nav>
+</header>
+
+<section class="hero">
+  <div class="hero-tag" id="heroTag"></div>
+  <h1 class="hero-name" id="heroName"></h1>
+  <div class="hero-meta" id="heroMeta"></div>
+  <div class="stats" id="heroStats"></div>
+</section>
+
+<div class="sdiv"><div class="sdiv-inner">commit history</div></div>
+<main class="git-log" id="gitLog"></main>
+
+<div class="sdiv"><div class="sdiv-inner">tech stack</div></div>
+<section class="skills" id="skills"></section>
+
+<footer>
+  <div class="foot-inner" id="footerInner"></div>
+</footer>
+
+<script>
+const LANE_W = 28;
+const DOT_R = 5;
+const COLORS = ['--c0','--c1','--c2','--c3'];
+
+let COMMITS = [];
+let rowEls = [];
+let svgW = 64;
+let observer;
+
+function maxLanes() {
+  if (!COMMITS.length) return 1;
+  return Math.max(...COMMITS.map(c => Math.max(...c.activeLanes))) + 1;
+}
+
+function laneX(lane) { return 12 + lane * LANE_W; }
+function cssVar(name) { return getComputedStyle(document.documentElement).getPropertyValue(name).trim(); }
+function laneColor(lane) { return cssVar(COLORS[lane % COLORS.length]); }
+
+function svgEl(tag, attrs) {
+  const el = document.createElementNS('http://www.w3.org/2000/svg', tag);
+  Object.entries(attrs).forEach(([k, v]) => el.setAttribute(k, v));
+  return el;
+}
+
+function drawLine(svg, x1, y1, x2, y2, color, w = 2) {
+  svg.appendChild(svgEl('line', { x1, y1, x2, y2, stroke: color, 'stroke-width': w, 'stroke-linecap': 'round' }));
+}
+
+function drawCurve(svg, x1, y1, x2, y2, color, w = 2) {
+  const dy = y2 - y1;
+  const cp = 0.6;
+  const d = `M ${x1} ${y1} C ${x1} ${y1 + dy * cp}, ${x2} ${y2 - dy * cp}, ${x2} ${y2}`;
+  svg.appendChild(svgEl('path', { d, stroke: color, fill: 'none', 'stroke-width': w, 'stroke-linecap': 'round' }));
+}
+
+function drawDot(svg, x, y, color, filled = false) {
+  drawDotWithState(svg, x, y, color, filled, false);
+}
+
+function drawDotWithState(svg, x, y, color, filled = false, active = false) {
+  const glowR = active ? DOT_R * 3.2 : DOT_R * 2.4;
+  const glowOpacity = active ? '0.3' : '0.13';
+  const dotR = active ? DOT_R + 1.5 : DOT_R;
+  const strokeW = active ? '3' : '2';
+
+  svg.appendChild(svgEl('circle', { cx: x, cy: y, r: glowR, fill: color, opacity: glowOpacity }));
+  svg.appendChild(svgEl('circle', { cx: x, cy: y, r: dotR, fill: filled ? color : cssVar('--bg'), stroke: color, 'stroke-width': strokeW }));
+}
+
+function drawAll() {
+  rowEls.forEach(({ row, svg, wrap, commit }, i) => {
+    const cardEl = row.querySelector('.commit-card');
+    const h = (cardEl ? cardEl.getBoundingClientRect().height : 40) + 8;
+    wrap.style.height = h + 'px';
+    svg.setAttribute('viewBox', `0 0 ${svgW} ${h}`);
+    svg.setAttribute('width', svgW);
+    svg.setAttribute('height', h);
+    svg.innerHTML = '';
+
+    const midY = h / 2;
+    // UI is rendered latest -> earliest, so the row below is the older state.
+    const prev = i < COMMITS.length - 1 ? COMMITS[i + 1] : null;
+    const prevLanes = prev ? prev.activeLanes : [];
+    const allLanes = new Set([...commit.activeLanes, ...prevLanes]);
+
+    allLanes.forEach(lane => {
+      const x = laneX(lane);
+      const color = laneColor(lane);
+      const wasActive = prevLanes.includes(lane);
+      const isActive = commit.activeLanes.includes(lane);
+      let y1 = 0;
+      let y2 = h;
+
+      // Only clip lane starts/ends at midpoint when this row is the explicit
+      // fork/merge event for this lane. Prevents orphan half-segments.
+      const startsHere =
+        !wasActive &&
+        isActive &&
+        commit.event === 'fork' &&
+        commit.forkToLane === lane;
+
+      const endsHere =
+        wasActive &&
+        !isActive &&
+        commit.event === 'merge' &&
+        commit.mergeFromLane === lane;
+
+      // Reverse-time render: lane start should connect upward (newer rows),
+      // and lane end should connect downward (older rows).
+      if (startsHere) y2 = midY;
+      if (endsHere) y1 = midY;
+
+      // On explicit fork/merge transition lanes, render only the curve to
+      // avoid short vertical spike artifacts at the event row.
+      if (startsHere || endsHere) return;
+
+      drawLine(svg, x, y1, x, y2, color);
+    });
+
+    if (commit.event === 'fork') {
+      // Reverse-time view: a fork starts the branch into newer rows (upward).
+      drawCurve(svg, laneX(commit.lane), midY, laneX(commit.forkToLane), 0, laneColor(commit.forkToLane));
+    }
+
+    if (commit.event === 'merge') {
+      // Reverse-time view: a merge arrives from older rows (downward) into this commit.
+      drawCurve(svg, laneX(commit.mergeFromLane), h, laneX(commit.lane), midY, laneColor(commit.mergeFromLane));
+    }
+
+    const isRoleNode = commit.card?.kind === 'role';
+
+    drawDotWithState(
+      svg,
+      laneX(commit.lane),
+      midY,
+      laneColor(commit.lane),
+      commit.isInit || isRoleNode,
+      row.classList.contains('open')
+    );
+  });
+}
+
+function buildCard(commit) {
+  const { card, isInit } = commit;
+  const div = document.createElement('div');
+  div.className = 'commit-card';
+  div.style.setProperty('--accent', `var(${card.accent})`);
+
+  if (isInit) {
+    div.style.opacity = '.4';
+    div.style.cursor = 'default';
+    div.innerHTML = `<div class="cc-head"><div class="cc-title" style="font-style:italic;color:var(--text-mid)">${card.title}</div><div class="cc-meta"><span class="cc-hash">${card.hash}</span><span class="cc-date">${card.date}</span></div></div>`;
+    return div;
+  }
+
+  const bullets = card.bullets.map(b => `<li>${b}</li>`).join('');
+  const tags = card.tags.map(t => `<span class="tag">${t}</span>`).join('');
+  const badge = card.kind ? `<span class="cc-badge cc-badge-${card.kind}">${card.kind.toUpperCase()}</span>` : '';
+
+  div.innerHTML = `
+    <div class="cc-head">
+      <div class="cc-title-wrap">${badge}<div class="cc-title">${card.title}</div></div>
+      <div class="cc-meta"><span class="cc-hash">${card.hash}</span><span class="cc-date">${card.date}</span></div>
+    </div>
+    ${card.org ? `<div class="cc-org">@ <b>${card.org}</b></div>` : ''}
+    <div class="cc-body">
+      <ul class="cc-msg">${bullets}</ul>
+      ${tags ? `<div class="tags">${tags}</div>` : ''}
+    </div>`;
+
+  return div;
+}
+
+function renderHeader(header) {
+  document.getElementById('cmdPath').textContent = header.path;
+  document.getElementById('cmdName').textContent = header.command;
+  document.getElementById('cmdFlags').textContent = ` ${header.flags}`;
+
+  const nav = document.getElementById('headerNav');
+  nav.innerHTML = '';
+
+  header.links.forEach(link => {
+    const a = document.createElement('a');
+    a.textContent = link.label;
+    a.href = link.href;
+    if (link.target) a.target = link.target;
+    if (link.className) a.className = link.className;
+    nav.appendChild(a);
+  });
+}
+
+function renderHero(hero) {
+  document.getElementById('heroTag').textContent = hero.tag;
+  document.getElementById('heroName').innerHTML = `${hero.name}<br><em>${hero.subtitle}</em>`;
+
+  const heroMeta = document.getElementById('heroMeta');
+  heroMeta.innerHTML = '';
+  hero.meta.forEach(item => {
+    const span = document.createElement('span');
+    span.innerHTML = item;
+    heroMeta.appendChild(span);
+  });
+
+  const heroStats = document.getElementById('heroStats');
+  heroStats.innerHTML = '';
+  hero.stats.forEach(stat => {
+    const wrapper = document.createElement('div');
+    wrapper.innerHTML = `<div class="stat-v">${stat.value}</div><div class="stat-l">${stat.label}</div>`;
+    heroStats.appendChild(wrapper);
+  });
+}
+
+function renderSkills(skills) {
+  const root = document.getElementById('skills');
+  root.innerHTML = '';
+
+  skills.forEach(group => {
+    const card = document.createElement('div');
+    card.className = 'sk-group';
+
+    const chips = group.chips.map(chip => `<span class="sk-chip">${chip}</span>`).join('');
+    card.innerHTML = `<div class="sk-label">${group.label}</div><div class="sk-chips">${chips}</div>`;
+    root.appendChild(card);
+  });
+}
+
+function renderFooter(footer) {
+  const root = document.getElementById('footerInner');
+  root.innerHTML = '';
+
+  footer.segments.forEach((segment, idx) => {
+    let el;
+
+    if (segment.type === 'link') {
+      el = document.createElement('a');
+      el.textContent = segment.value;
+      el.href = segment.href;
+      if (segment.target) el.target = segment.target;
+    } else if (segment.type === 'html') {
+      el = document.createElement('span');
+      el.innerHTML = segment.value;
+    } else {
+      el = document.createElement('span');
+      el.textContent = segment.value;
+    }
+
+    root.appendChild(el);
+    if (idx !== footer.segments.length - 1) {
+      const sep = document.createElement('span');
+      sep.innerHTML = '&#183;';
+      root.appendChild(sep);
+    }
+  });
+}
+
+function renderCommits(commits) {
+  // Data is stored earliest -> latest; render latest -> earliest.
+  // Keep event semantics and apply reverse-time geometry in drawAll().
+  COMMITS = [...commits].reverse();
+  const log = document.getElementById('gitLog');
+  log.innerHTML = '';
+
+  const nLanes = maxLanes();
+  svgW = nLanes * LANE_W + 8;
+  log.style.setProperty('--graph-col', `${svgW}px`);
+
+  rowEls = COMMITS.map((commit, i) => {
+    const row = document.createElement('div');
+    row.className = 'git-row';
+
+    const wrap = document.createElement('div');
+    wrap.className = 'graph-svg-wrap';
+    const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+    wrap.appendChild(svg);
+    row.appendChild(wrap);
+
+    const card = buildCard(commit);
+    row.appendChild(card);
+
+    if (!commit.isInit) {
+      row.addEventListener('click', () => {
+        const wasOpen = row.classList.contains('open');
+        document.querySelectorAll('.git-row.open').forEach(r => r.classList.remove('open'));
+        if (!wasOpen) row.classList.add('open');
+        // Recompute graph heights at toggle start and after animation settles.
+        requestAnimationFrame(drawAll);
+        setTimeout(drawAll, 120);
+        setTimeout(drawAll, 430);
+      });
+    }
+
+    const body = row.querySelector('.cc-body');
+    if (body) {
+      body.addEventListener('transitionend', (event) => {
+        if (event.propertyName === 'max-height') drawAll();
+      });
+    }
+
+    log.appendChild(row);
+    return { row, svg, wrap, commit, idx: i };
+  });
+
+  if (observer) observer.disconnect();
+  observer = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('vis');
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.06 });
+
+  rowEls.forEach(({ row }, i) => {
+    row.style.transitionDelay = `${i * 0.06}s`;
+    observer.observe(row);
+  });
+
+  requestAnimationFrame(drawAll);
+}
+
+async function loadSiteContent() {
+  const response = await fetch('data/site-content.json', { cache: 'no-store' });
+  if (!response.ok) throw new Error(`Failed to load content JSON (${response.status})`);
+  return response.json();
+}
+
+async function init() {
+  try {
+    const content = await loadSiteContent();
+    document.title = content.pageTitle || 'git log';
+    renderHeader(content.header);
+    renderHero(content.hero);
+    renderSkills(content.skills);
+    renderFooter(content.footer);
+    renderCommits(content.commits);
+  } catch (error) {
+    console.error(error);
+    const log = document.getElementById('gitLog');
+    log.innerHTML = '<p style="color:var(--text-lo);font-family:var(--font-mono);font-size:.75rem">Failed to load site content. Run from a web server so /data/site-content.json can be fetched.</p>';
+  }
+}
+
+let rsTimer;
+window.addEventListener('resize', () => {
+  clearTimeout(rsTimer);
+  rsTimer = setTimeout(drawAll, 80);
+});
+
+window.addEventListener('DOMContentLoaded', init);
+</script>
+</body>
 </html>

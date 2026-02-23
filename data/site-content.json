@@ -1,0 +1,875 @@
+{
+  "pageTitle": "git log --author=\"Christopher Setian\"",
+  "header": {
+    "path": "~/career",
+    "command": "git log",
+    "flags": "--all --graph --decorate",
+    "links": [
+      {
+        "label": "email",
+        "href": "mailto:chris.setian@gmail.com"
+      },
+      {
+        "label": "github",
+        "href": "https://github.com/cssetian",
+        "target": "_blank"
+      },
+      {
+        "label": "linkedin",
+        "href": "https://linkedin.com/in/cssetian",
+        "target": "_blank"
+      },
+      {
+        "label": "\u2193 resume.pdf",
+        "href": "resume.pdf",
+        "target": "_blank",
+        "className": "btn"
+      }
+    ]
+  },
+  "hero": {
+    "tag": "git log --author",
+    "name": "Christopher Setian",
+    "subtitle": "Engineering Leader / Former CTO",
+    "meta": [
+      "author <b>Christopher Setian &lt;chris.setian@gmail.com&gt;</b>",
+      "HEAD \u2192 <b style=\"color:var(--c0)\">main</b>",
+      "based in <b>San Francisco, CA</b>"
+    ],
+    "stats": [
+      {
+        "value": "14+",
+        "label": "years shipped"
+      },
+      {
+        "value": "6",
+        "label": "companies"
+      },
+      {
+        "value": "2",
+        "label": "founder pivots"
+      },
+      {
+        "value": "$6M",
+        "label": "raised"
+      }
+    ]
+  },
+  "skills": [
+    {
+      "label": "Frontend",
+      "chips": [
+        "React",
+        "SPA",
+        "2D/3D Visualization",
+        "Geospatial UI",
+        "Performance"
+      ]
+    },
+    {
+      "label": "Backend / Platform",
+      "chips": [
+        "APIs",
+        "ETL",
+        "Data Ingestion",
+        "Workflows",
+        "SDKs"
+      ]
+    },
+    {
+      "label": "AI / ML Product",
+      "chips": [
+        "LLMs",
+        "Agentic Systems",
+        "Model Evaluation",
+        "Active Learning",
+        "AEO"
+      ]
+    },
+    {
+      "label": "Leadership",
+      "chips": [
+        "Org Scaling",
+        "Hiring",
+        "EM Development",
+        "Cross-functional Strategy",
+        "Technical Vision"
+      ]
+    }
+  ],
+  "footer": {
+    "segments": [
+      {
+        "type": "text",
+        "value": "\u00a9 2026 Christopher Setian"
+      },
+      {
+        "type": "link",
+        "value": "chris.setian@gmail.com",
+        "href": "mailto:chris.setian@gmail.com"
+      },
+      {
+        "type": "link",
+        "value": "github.com/cssetian",
+        "href": "https://github.com/cssetian",
+        "target": "_blank"
+      },
+      {
+        "type": "link",
+        "value": "linkedin.com/in/cssetian",
+        "href": "https://linkedin.com/in/cssetian",
+        "target": "_blank"
+      },
+      {
+        "type": "html",
+        "value": "<span style=\"color:var(--c0)\">on main</span>"
+      },
+      {
+        "type": "text",
+        "value": "working tree dirty"
+      }
+    ]
+  },
+  "commits": [
+    {
+      "id": "init",
+      "lane": 0,
+      "activeLanes": [
+        0
+      ],
+      "event": null,
+      "isInit": true,
+      "card": {
+        "title": "Initial commit",
+        "hash": "0000000",
+        "date": "Born, Earth",
+        "org": null,
+        "accent": "--c0",
+        "bullets": [],
+        "tags": []
+      }
+    },
+    {
+      "id": "fork-tjhsst",
+      "lane": 0,
+      "activeLanes": [
+        0,
+        1
+      ],
+      "event": "fork",
+      "forkToLane": 1,
+      "card": {
+        "title": "Thomas Jefferson High School for Science and Technology",
+        "hash": "1a2b3c4",
+        "date": "2007",
+        "org": "Alexandria, Virginia",
+        "accent": "--c3",
+        "bullets": [
+          "Started education."
+        ],
+        "tags": [
+          "TJHSST",
+          "Education"
+        ],
+        "kind": "fork"
+      }
+    },
+    {
+      "id": "tjhsst-role",
+      "lane": 1,
+      "activeLanes": [
+        0,
+        1
+      ],
+      "event": null,
+      "card": {
+        "title": "Student (2007-2007)",
+        "hash": "1b2c3d4",
+        "date": "2007",
+        "org": "Thomas Jefferson High School for Science and Technology",
+        "accent": "--c3",
+        "bullets": [
+          "Graduated in 2007."
+        ],
+        "tags": [
+          "TJHSST",
+          "Education"
+        ],
+        "kind": "role"
+      }
+    },
+    {
+      "id": "merge-tjhsst",
+      "lane": 0,
+      "activeLanes": [
+        0
+      ],
+      "event": "merge",
+      "mergeFromLane": 1,
+      "card": {
+        "title": "Complete education at Thomas Jefferson High School for Science and Technology",
+        "hash": "1c2d3e4",
+        "date": "2007",
+        "org": "Alexandria, Virginia",
+        "accent": "--c3",
+        "bullets": [
+          "Graduated high school in 2007."
+        ],
+        "tags": [
+          "TJHSST",
+          "Education"
+        ],
+        "kind": "merge"
+      }
+    },
+    {
+      "id": "fork-upenn",
+      "lane": 0,
+      "activeLanes": [
+        0,
+        1
+      ],
+      "event": "fork",
+      "forkToLane": 1,
+      "card": {
+        "title": "Begin education at University of Pennsylvania",
+        "hash": "2a3b4c5",
+        "date": "2007",
+        "org": "University of Pennsylvania",
+        "accent": "--c3",
+        "bullets": [
+          "Education chapter start at UPenn."
+        ],
+        "tags": [
+          "UPenn",
+          "Education"
+        ],
+        "kind": "fork"
+      }
+    },
+    {
+      "id": "upenn-bse-role",
+      "lane": 1,
+      "activeLanes": [
+        0,
+        1
+      ],
+      "event": null,
+      "card": {
+        "title": "BSE, Electrical Engineering (2007-2011)",
+        "hash": "2b3c4d5",
+        "date": "2007",
+        "org": "University of Pennsylvania",
+        "accent": "--c3",
+        "bullets": [
+          "Completed Bachelor of Science in Engineering in Electrical Engineering."
+        ],
+        "tags": [
+          "BSE",
+          "Electrical Engineering"
+        ],
+        "kind": "role"
+      }
+    },
+    {
+      "id": "fork-upenn-mse",
+      "lane": 1,
+      "activeLanes": [
+        0,
+        1,
+        2
+      ],
+      "event": "fork",
+      "forkToLane": 2,
+      "card": {
+        "title": "Begin education at University of Pennsylvania (MSE track)",
+        "hash": "2c3d4e5",
+        "date": "2010",
+        "org": "University of Pennsylvania",
+        "accent": "--c3",
+        "bullets": [
+          "Started MSE during junior year of BSE."
+        ],
+        "tags": [
+          "MSE",
+          "Branch of Branch"
+        ],
+        "kind": "fork"
+      }
+    },
+    {
+      "id": "upenn-mse-role",
+      "lane": 2,
+      "activeLanes": [
+        0,
+        1,
+        2
+      ],
+      "event": null,
+      "card": {
+        "title": "MSE, Electrical Engineering (2010-2011)",
+        "hash": "2d3e4f5",
+        "date": "2010",
+        "org": "University of Pennsylvania",
+        "accent": "--c2",
+        "bullets": [
+          "Completed Master of Science in Engineering in Electrical Engineering."
+        ],
+        "tags": [
+          "MSE",
+          "Electrical Engineering"
+        ],
+        "kind": "role"
+      }
+    },
+    {
+      "id": "merge-upenn-mse",
+      "lane": 1,
+      "activeLanes": [
+        0,
+        1
+      ],
+      "event": "merge",
+      "mergeFromLane": 2,
+      "card": {
+        "title": "Complete education at University of Pennsylvania (MSE track)",
+        "hash": "2e3f4a5",
+        "date": "2011",
+        "org": "University of Pennsylvania",
+        "accent": "--c2",
+        "bullets": [
+          "MSE track completed in 2011."
+        ],
+        "tags": [
+          "MSE Complete"
+        ],
+        "kind": "merge"
+      }
+    },
+    {
+      "id": "merge-upenn",
+      "lane": 0,
+      "activeLanes": [
+        0
+      ],
+      "event": "merge",
+      "mergeFromLane": 1,
+      "card": {
+        "title": "Complete education at University of Pennsylvania",
+        "hash": "2f4a5b6",
+        "date": "2011",
+        "org": "University of Pennsylvania",
+        "accent": "--c3",
+        "bullets": [
+          "Closed UPenn education chapter and moved into industry."
+        ],
+        "tags": [
+          "UPenn Complete"
+        ],
+        "kind": "merge"
+      }
+    },
+    {
+      "id": "fork-credit-suisse",
+      "lane": 0,
+      "activeLanes": [
+        0,
+        1
+      ],
+      "event": "fork",
+      "forkToLane": 1,
+      "card": {
+        "title": "Join Credit Suisse",
+        "hash": "3a4b5c6",
+        "date": "2011",
+        "org": "Credit Suisse",
+        "accent": "--c1",
+        "bullets": [
+          "Employment chapter start."
+        ],
+        "tags": [
+          "Finance"
+        ],
+        "kind": "fork"
+      }
+    },
+    {
+      "id": "credit-suisse-role",
+      "lane": 1,
+      "activeLanes": [
+        0,
+        1
+      ],
+      "event": null,
+      "card": {
+        "title": "Technical Analyst (2011-2013)",
+        "hash": "3b4c5d6",
+        "date": "2011",
+        "org": "Credit Suisse",
+        "accent": "--c1",
+        "bullets": [
+          "Built analytics tools for trade and deal flow data; mentored interns."
+        ],
+        "tags": [
+          "Analytics",
+          "Mentorship"
+        ],
+        "kind": "role"
+      }
+    },
+    {
+      "id": "merge-credit-suisse",
+      "lane": 0,
+      "activeLanes": [
+        0
+      ],
+      "event": "merge",
+      "mergeFromLane": 1,
+      "card": {
+        "title": "Leave Credit Suisse",
+        "hash": "3c4d5e6",
+        "date": "2013",
+        "org": "Credit Suisse",
+        "accent": "--c1",
+        "bullets": [
+          "Completed Credit Suisse chapter."
+        ],
+        "tags": [
+          "Transition"
+        ],
+        "kind": "merge"
+      }
+    },
+    {
+      "id": "fork-blackstone",
+      "lane": 0,
+      "activeLanes": [
+        0,
+        1
+      ],
+      "event": "fork",
+      "forkToLane": 1,
+      "card": {
+        "title": "Join The Blackstone Group",
+        "hash": "4a5b6c7",
+        "date": "2013",
+        "org": "The Blackstone Group",
+        "accent": "--c1",
+        "bullets": [
+          "Employment chapter start."
+        ],
+        "tags": [
+          "Private Equity"
+        ],
+        "kind": "fork"
+      }
+    },
+    {
+      "id": "blackstone-role",
+      "lane": 1,
+      "activeLanes": [
+        0,
+        1
+      ],
+      "event": null,
+      "card": {
+        "title": "Software Engineer (2013-2015)",
+        "hash": "4b5c6d7",
+        "date": "2013",
+        "org": "The Blackstone Group",
+        "accent": "--c1",
+        "bullets": [
+          "Built full-stack data management and visualization tools for private equity workflows."
+        ],
+        "tags": [
+          "Full-stack",
+          "Data Visualization"
+        ],
+        "kind": "role"
+      }
+    },
+    {
+      "id": "merge-blackstone",
+      "lane": 0,
+      "activeLanes": [
+        0
+      ],
+      "event": "merge",
+      "mergeFromLane": 1,
+      "card": {
+        "title": "Leave The Blackstone Group",
+        "hash": "4c5d6e7",
+        "date": "2015",
+        "org": "The Blackstone Group",
+        "accent": "--c1",
+        "bullets": [
+          "Completed Blackstone chapter."
+        ],
+        "tags": [
+          "Transition"
+        ],
+        "kind": "merge"
+      }
+    },
+    {
+      "id": "fork-plangrid",
+      "lane": 0,
+      "activeLanes": [
+        0,
+        1
+      ],
+      "event": "fork",
+      "forkToLane": 1,
+      "card": {
+        "title": "Join PlanGrid",
+        "hash": "5a6b7c8",
+        "date": "2015",
+        "org": "PlanGrid",
+        "accent": "--c1",
+        "bullets": [
+          "Employment chapter start."
+        ],
+        "tags": [
+          "Construction Tech"
+        ],
+        "kind": "fork"
+      }
+    },
+    {
+      "id": "plangrid-role",
+      "lane": 1,
+      "activeLanes": [
+        0,
+        1
+      ],
+      "event": null,
+      "card": {
+        "title": "Software Engineer (2015-2018)",
+        "hash": "5b6c7d8",
+        "date": "2015",
+        "org": "PlanGrid",
+        "accent": "--c1",
+        "bullets": [
+          "Led core web products and built ML-driven extraction/classification for construction workflows."
+        ],
+        "tags": [
+          "Web",
+          "ML Product"
+        ],
+        "kind": "role"
+      }
+    },
+    {
+      "id": "merge-plangrid",
+      "lane": 0,
+      "activeLanes": [
+        0
+      ],
+      "event": "merge",
+      "mergeFromLane": 1,
+      "card": {
+        "title": "Leave PlanGrid",
+        "hash": "5c6d7e8",
+        "date": "2018",
+        "org": "PlanGrid",
+        "accent": "--c1",
+        "bullets": [
+          "Completed PlanGrid chapter."
+        ],
+        "tags": [
+          "Transition"
+        ],
+        "kind": "merge"
+      }
+    },
+    {
+      "id": "fork-cruise",
+      "lane": 0,
+      "activeLanes": [
+        0,
+        1
+      ],
+      "event": "fork",
+      "forkToLane": 1,
+      "card": {
+        "title": "Join GM Cruise",
+        "hash": "6a7b8c9",
+        "date": "2018",
+        "org": "GM Cruise",
+        "accent": "--c2",
+        "bullets": [
+          "Employment chapter start."
+        ],
+        "tags": [
+          "Autonomous Vehicles"
+        ],
+        "kind": "fork"
+      }
+    },
+    {
+      "id": "cruise-sse-role",
+      "lane": 1,
+      "activeLanes": [
+        0,
+        1
+      ],
+      "event": null,
+      "card": {
+        "title": "Senior Software Engineer, Cartographer (2018-2020)",
+        "hash": "6b7c8d9",
+        "date": "2018",
+        "org": "GM Cruise",
+        "accent": "--c2",
+        "bullets": [
+          "Led HD map tooling architecture and automation; shipped git-for-maps style versioned workflows."
+        ],
+        "tags": [
+          "Geospatial",
+          "Platform Architecture"
+        ],
+        "kind": "role"
+      }
+    },
+    {
+      "id": "cruise-em-role",
+      "lane": 1,
+      "activeLanes": [
+        0,
+        1
+      ],
+      "event": null,
+      "card": {
+        "title": "Engineering Manager, Maps Engineering (2020-2021)",
+        "hash": "6c7d8e9",
+        "date": "2020",
+        "org": "GM Cruise",
+        "accent": "--c2",
+        "bullets": [
+          "Managed distributed team and roadmap for geospatial visualization + map-labeling systems."
+        ],
+        "tags": [
+          "Engineering Management",
+          "Roadmap"
+        ],
+        "kind": "role"
+      }
+    },
+    {
+      "id": "merge-cruise",
+      "lane": 0,
+      "activeLanes": [
+        0
+      ],
+      "event": "merge",
+      "mergeFromLane": 1,
+      "card": {
+        "title": "Leave GM Cruise",
+        "hash": "6d7e8f9",
+        "date": "2021",
+        "org": "GM Cruise",
+        "accent": "--c2",
+        "bullets": [
+          "Completed GM Cruise chapter."
+        ],
+        "tags": [
+          "Transition"
+        ],
+        "kind": "merge"
+      }
+    },
+    {
+      "id": "fork-labelbox",
+      "lane": 0,
+      "activeLanes": [
+        0,
+        1
+      ],
+      "event": "fork",
+      "forkToLane": 1,
+      "card": {
+        "title": "Join Labelbox",
+        "hash": "7a8b9c0",
+        "date": "2021",
+        "org": "Labelbox",
+        "accent": "--c1",
+        "bullets": [
+          "Employment chapter start."
+        ],
+        "tags": [
+          "ML Platform"
+        ],
+        "kind": "fork"
+      }
+    },
+    {
+      "id": "labelbox-em-role",
+      "lane": 1,
+      "activeLanes": [
+        0,
+        1
+      ],
+      "event": null,
+      "card": {
+        "title": "Engineering Manager (2021-2021)",
+        "hash": "7b8c9d0",
+        "date": "2021",
+        "org": "Labelbox",
+        "accent": "--c1",
+        "bullets": [
+          "Built and scaled Active Learning team; established org practices for planning/execution/hiring."
+        ],
+        "tags": [
+          "Team Building",
+          "Execution"
+        ],
+        "kind": "role"
+      }
+    },
+    {
+      "id": "labelbox-sem-role",
+      "lane": 1,
+      "activeLanes": [
+        0,
+        1
+      ],
+      "event": null,
+      "card": {
+        "title": "Senior Engineering Manager (2021-2022)",
+        "hash": "7c8d9e0",
+        "date": "2021",
+        "org": "Labelbox",
+        "accent": "--c1",
+        "bullets": [
+          "Scaled org from 6 to 15 engineers and led core Active Learning platform roadmap."
+        ],
+        "tags": [
+          "Org Scaling",
+          "Roadmapping"
+        ],
+        "kind": "role"
+      }
+    },
+    {
+      "id": "labelbox-director-role",
+      "lane": 1,
+      "activeLanes": [
+        0,
+        1
+      ],
+      "event": null,
+      "card": {
+        "title": "Director of Engineering, Active Learning (2022-2023)",
+        "hash": "7d8e9f0",
+        "date": "2022",
+        "org": "Labelbox",
+        "accent": "--c1",
+        "bullets": [
+          "Expanded from labeling focus into model eval + data exploration; scaled org to 20 across 3 teams."
+        ],
+        "tags": [
+          "Director",
+          "ML Products"
+        ],
+        "kind": "role"
+      }
+    },
+    {
+      "id": "merge-labelbox",
+      "lane": 0,
+      "activeLanes": [
+        0
+      ],
+      "event": "merge",
+      "mergeFromLane": 1,
+      "card": {
+        "title": "Leave Labelbox",
+        "hash": "7e9f0a1",
+        "date": "2023",
+        "org": "Labelbox",
+        "accent": "--c1",
+        "bullets": [
+          "Completed Labelbox chapter."
+        ],
+        "tags": [
+          "Transition"
+        ],
+        "kind": "merge"
+      }
+    },
+    {
+      "id": "fork-concierge",
+      "lane": 0,
+      "activeLanes": [
+        0,
+        1
+      ],
+      "event": "fork",
+      "forkToLane": 1,
+      "card": {
+        "title": "Join Concierge AI",
+        "hash": "8a9b0c1",
+        "date": "2023",
+        "org": "Concierge AI",
+        "accent": "--c0",
+        "bullets": [
+          "Employment chapter start."
+        ],
+        "tags": [
+          "Startup",
+          "AI"
+        ],
+        "kind": "fork"
+      }
+    },
+    {
+      "id": "concierge-cto-role",
+      "lane": 1,
+      "activeLanes": [
+        0,
+        1
+      ],
+      "event": null,
+      "card": {
+        "title": "Co-Founder & Chief Technology Officer (2023-2026)",
+        "hash": "8b0c1d2",
+        "date": "2023",
+        "org": "Concierge AI",
+        "accent": "--c0",
+        "bullets": [
+          "Led technical vision across multiple pivots and shipped products; scaled to paying customers and ARR.",
+          "Built LLM-powered platforms, hired senior/staff engineers, and raised $6M across two rounds."
+        ],
+        "tags": [
+          "CTO",
+          "LLMs",
+          "Hiring",
+          "Fundraising"
+        ],
+        "kind": "role"
+      }
+    },
+    {
+      "id": "merge-concierge",
+      "lane": 0,
+      "activeLanes": [
+        0
+      ],
+      "event": "merge",
+      "mergeFromLane": 1,
+      "card": {
+        "title": "Leave Concierge AI",
+        "hash": "8c1d2e3",
+        "date": "2026",
+        "org": "Concierge AI",
+        "accent": "--c0",
+        "bullets": [
+          "Completed Concierge AI chapter in 2026."
+        ],
+        "tags": [
+          "Most Recent"
+        ],
+        "kind": "merge"
+      }
+    }
+  ]
+}
