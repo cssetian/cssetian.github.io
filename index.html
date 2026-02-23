@@ -95,8 +95,8 @@
   .cc-date{font-family:var(--font-mono);font-size:.65rem;color:var(--text-lo)}
   .cc-org{font-family:var(--font-mono);font-size:.68rem;color:var(--text-lo);margin:.3rem 0 0}
   .cc-org b{color:var(--text-mid);font-weight:400}
-  .cc-body{max-height:0;overflow:hidden;opacity:0;transition:max-height .4s var(--ease),opacity .3s}
-  .git-row.open .cc-body{max-height:600px;opacity:1}
+  .cc-body{height:0;overflow:hidden;opacity:0;transition:height .42s var(--ease),opacity .28s var(--ease);will-change:height,opacity}
+  .git-row.open .cc-body{opacity:1}
   .cc-msg{font-size:.85rem;line-height:1.75;color:var(--text-mid);margin-top:.7rem;padding-top:.7rem;border-top:1px solid var(--border);list-style:none;display:flex;flex-direction:column;gap:.35rem}
   .cc-msg li{display:flex;gap:.55rem;align-items:flex-start}
   .cc-msg li::before{content:'·';color:var(--accent,var(--c0));font-family:var(--font-mono);flex-shrink:0;line-height:1.75}
@@ -160,6 +160,38 @@ let COMMITS = [];
 let rowEls = [];
 let svgW = 64;
 let observer;
+let drawLoopFrame = 0;
+let drawLoopUntil = 0;
+
+function drawFor(ms = 520) {
+  drawLoopUntil = Math.max(drawLoopUntil, performance.now() + ms);
+  if (drawLoopFrame) return;
+
+  const tick = now => {
+    drawAll();
+    if (now < drawLoopUntil) {
+      drawLoopFrame = requestAnimationFrame(tick);
+      return;
+    }
+    drawLoopFrame = 0;
+  };
+
+  drawLoopFrame = requestAnimationFrame(tick);
+}
+
+function setRowExpanded(row, expanded) {
+  const body = row.querySelector('.cc-body');
+  if (!body) return;
+
+  const fromH = body.getBoundingClientRect().height;
+  body.style.height = `${fromH}px`;
+  body.getBoundingClientRect();
+
+  row.classList.toggle('open', expanded);
+  const toH = expanded ? body.scrollHeight : 0;
+  body.style.height = `${toH}px`;
+  drawFor();
+}
 
 function maxLanes() {
   if (!COMMITS.length) return 1;
@@ -414,19 +446,24 @@ function renderCommits(commits) {
     if (!commit.isInit) {
       row.addEventListener('click', () => {
         const wasOpen = row.classList.contains('open');
-        document.querySelectorAll('.git-row.open').forEach(r => r.classList.remove('open'));
-        if (!wasOpen) row.classList.add('open');
-        // Recompute graph heights at toggle start and after animation settles.
+        document.querySelectorAll('.git-row.open').forEach(r => {
+          if (r !== row) setRowExpanded(r, false);
+        });
+        setRowExpanded(row, !wasOpen);
         requestAnimationFrame(drawAll);
-        setTimeout(drawAll, 120);
-        setTimeout(drawAll, 430);
       });
     }
 
     const body = row.querySelector('.cc-body');
     if (body) {
+      body.style.height = '0px';
+      body.addEventListener('transitionrun', event => {
+        if (event.propertyName === 'height') drawFor();
+      });
       body.addEventListener('transitionend', (event) => {
-        if (event.propertyName === 'max-height') drawAll();
+        if (event.propertyName !== 'height') return;
+        body.style.height = row.classList.contains('open') ? 'auto' : '0px';
+        drawAll();
       });
     }
 
