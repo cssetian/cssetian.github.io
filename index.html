@@ -46,7 +46,18 @@
   .hero{max-width:920px;margin:0 auto;padding:5rem 2rem 3rem;animation:fadeUp .8s var(--ease) both}
   .hero-tag{font-family:var(--font-mono);font-size:.7rem;color:var(--c0);letter-spacing:.08em;text-transform:uppercase;margin-bottom:.9rem;opacity:.85}
   .hero-name{font-family:var(--font-display);font-size:clamp(2.6rem,5.5vw,4.8rem);line-height:1.06;letter-spacing:-.02em}
-  .hero-name em{font-style:italic;color:var(--text-mid)}
+  .hero-name em{
+    display:block;
+    margin-top:.45rem;
+    font-family:var(--font-mono);
+    font-size:clamp(.72rem,1.5vw,.95rem);
+    line-height:1.25;
+    letter-spacing:.05em;
+    text-transform:uppercase;
+    font-style:normal;
+    color:var(--text-lo);
+    opacity:.72;
+  }
   .hero-meta{display:flex;flex-wrap:wrap;gap:1.25rem;margin-top:1.4rem}
   .hero-meta span{font-family:var(--font-mono);font-size:.7rem;color:var(--text-lo)}
   .hero-meta span b{color:var(--text-mid);font-weight:400}
@@ -68,6 +79,25 @@
   .commit-card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;border-radius:8px 0 0 8px;background:var(--accent,var(--c0));opacity:0;transition:opacity .2s}
   .git-row:hover .commit-card{background:var(--bg-hover);border-color:var(--border-lt)}
   .git-row:hover .commit-card::before{opacity:1}
+  .commit-card-role{border-color:var(--border-lt)}
+  .git-row:hover .commit-card-role::before{opacity:1}
+  .commit-card-marker{
+    padding:.45rem .8rem;
+    background:var(--bg-card);
+    border-color:var(--border);
+    border-style:dashed;
+    cursor:default;
+  }
+  .commit-card-marker.marker-join{margin-bottom:10px}
+  .commit-card-marker.marker-leave{margin-top:10px}
+  .commit-card-marker::before{opacity:.18;width:2px}
+  .git-row:hover .commit-card-marker{
+    background:var(--bg-card);
+    border-color:var(--border);
+  }
+  .git-row:hover .commit-card-marker::before{opacity:.18}
+  .commit-card-marker .cc-title{font-size:.93rem;color:var(--text-lo)}
+  .commit-card-marker .cc-date{font-size:.62rem}
   .cc-head{display:flex;align-items:flex-start;justify-content:space-between;gap:.75rem}
   .cc-title-wrap{display:flex;align-items:center;gap:.55rem;min-width:0}
   .cc-title{font-family:var(--font-display);font-size:1rem;line-height:1.35}
@@ -193,6 +223,17 @@ function setRowExpanded(row, expanded) {
   drawFor();
 }
 
+function isMarkerCommit(commit) {
+  if (!commit || commit.isInit) return false;
+  return commit.card?.kind === 'transition' || commit.event === 'fork' || commit.event === 'merge';
+}
+
+function markerSpacingClass(commit) {
+  if (commit.event === 'fork' || commit.card?.kind === 'fork') return 'marker-join';
+  if (commit.event === 'merge' || commit.card?.kind === 'merge') return 'marker-leave';
+  return '';
+}
+
 function maxLanes() {
   if (!COMMITS.length) return 1;
   return Math.max(...COMMITS.map(c => Math.max(...c.activeLanes))) + 1;
@@ -223,11 +264,12 @@ function drawDot(svg, x, y, color, filled = false) {
   drawDotWithState(svg, x, y, color, filled, false);
 }
 
-function drawDotWithState(svg, x, y, color, filled = false, active = false) {
-  const glowR = active ? DOT_R * 3.2 : DOT_R * 2.4;
-  const glowOpacity = active ? '0.3' : '0.13';
-  const dotR = active ? DOT_R + 1.5 : DOT_R;
-  const strokeW = active ? '3' : '2';
+function drawDotWithState(svg, x, y, color, filled = false, active = false, subtle = false) {
+  const glowBase = subtle ? DOT_R * 1.9 : DOT_R * 2.4;
+  const glowR = active ? (subtle ? DOT_R * 2.2 : DOT_R * 3.2) : glowBase;
+  const glowOpacity = active ? (subtle ? '0.16' : '0.3') : (subtle ? '0.08' : '0.13');
+  const dotR = active ? (subtle ? DOT_R + 0.4 : DOT_R + 1.5) : (subtle ? DOT_R - 0.6 : DOT_R);
+  const strokeW = active ? (subtle ? '2' : '3') : (subtle ? '1.5' : '2');
 
   svg.appendChild(svgEl('circle', { cx: x, cy: y, r: glowR, fill: color, opacity: glowOpacity }));
   svg.appendChild(svgEl('circle', { cx: x, cy: y, r: dotR, fill: filled ? color : cssVar('--bg'), stroke: color, 'stroke-width': strokeW }));
@@ -236,14 +278,18 @@ function drawDotWithState(svg, x, y, color, filled = false, active = false) {
 function drawAll() {
   rowEls.forEach(({ row, svg, wrap, commit }, i) => {
     const cardEl = row.querySelector('.commit-card');
-    const h = (cardEl ? cardEl.getBoundingClientRect().height : 40) + 8;
+    const cardH = cardEl ? cardEl.getBoundingClientRect().height : 40;
+    const cardStyle = cardEl ? getComputedStyle(cardEl) : null;
+    const marginTop = cardStyle ? parseFloat(cardStyle.marginTop) || 0 : 4;
+    const marginBottom = cardStyle ? parseFloat(cardStyle.marginBottom) || 0 : 4;
+    const h = cardH + marginTop + marginBottom;
     wrap.style.height = h + 'px';
     svg.setAttribute('viewBox', `0 0 ${svgW} ${h}`);
     svg.setAttribute('width', svgW);
     svg.setAttribute('height', h);
     svg.innerHTML = '';
 
-    const midY = h / 2;
+    const midY = marginTop + (cardH / 2);
     // UI is rendered latest -> earliest, so the row below is the older state.
     const prev = i < COMMITS.length - 1 ? COMMITS[i + 1] : null;
     const prevLanes = prev ? prev.activeLanes : [];
@@ -294,6 +340,7 @@ function drawAll() {
     }
 
     const isRoleNode = commit.card?.kind === 'role';
+    const isMarkerNode = isMarkerCommit(commit);
 
     drawDotWithState(
       svg,
@@ -301,7 +348,8 @@ function drawAll() {
       midY,
       laneColor(commit.lane),
       commit.isInit || isRoleNode,
-      row.classList.contains('open')
+      row.classList.contains('open'),
+      isMarkerNode
     );
   });
 }
@@ -310,12 +358,25 @@ function buildCard(commit) {
   const { card, isInit } = commit;
   const div = document.createElement('div');
   div.className = 'commit-card';
+  if (card.kind === 'role') div.classList.add('commit-card-role');
   div.style.setProperty('--accent', `var(${card.accent})`);
 
   if (isInit) {
     div.style.opacity = '.4';
     div.style.cursor = 'default';
     div.innerHTML = `<div class="cc-head"><div class="cc-title" style="font-style:italic;color:var(--text-mid)">${card.title}</div><div class="cc-meta"><span class="cc-hash">${card.hash}</span><span class="cc-date">${card.date}</span></div></div>`;
+    return div;
+  }
+
+  if (isMarkerCommit(commit)) {
+    div.classList.add('commit-card-marker');
+    const spacingClass = markerSpacingClass(commit);
+    if (spacingClass) div.classList.add(spacingClass);
+    div.innerHTML = `
+      <div class="cc-head">
+        <div class="cc-title-wrap"><div class="cc-title">${card.title}</div></div>
+        <div class="cc-meta"><span class="cc-date">${card.date}</span></div>
+      </div>`;
     return div;
   }
 
@@ -443,7 +504,7 @@ function renderCommits(commits) {
     const card = buildCard(commit);
     row.appendChild(card);
 
-    if (!commit.isInit) {
+    if (!commit.isInit && !isMarkerCommit(commit)) {
       row.addEventListener('click', () => {
         const wasOpen = row.classList.contains('open');
         document.querySelectorAll('.git-row.open').forEach(r => {
