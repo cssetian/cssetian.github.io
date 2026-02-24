@@ -166,19 +166,7 @@
         1
       ],
       "event": "fork",
-      "forkToLane": 1,
-      "card": {
-        "title": "Thomas Jefferson High School for Science and Technology",
-        "hash": "1a2b3c4",
-        "date": "2004",
-        "org": "Alexandria, Virginia",
-        "accent": "--c3",
-        "bullets": [
-          "Started education."
-        ],
-        "tags": [],
-        "kind": "fork"
-      }
+      "forkToLane": 1
     },
     {
       "id": "tjhsst-role",
@@ -191,8 +179,8 @@
       "card": {
         "title": "Student (2004-2007)",
         "hash": "1b2c3d4",
-        "date": "2007",
-        "org": "Thomas Jefferson High School for Science and Technology",
+        "date": "JUN 2007",
+        "org": "Thomas Jefferson High School for Science and Technology (2004-2007)",
         "accent": "--c3",
         "bullets": [
           "Graduated in 2007."
@@ -231,7 +219,7 @@
       "card": {
         "title": "BSE, Electrical Engineering (2007-2011)",
         "hash": "2b3c4d5",
-        "date": "2007",
+        "date": "MAY 2011",
         "org": "University of Pennsylvania",
         "accent": "--c3",
         "bullets": [
@@ -264,7 +252,7 @@
       "card": {
         "title": "MSE, Electrical Engineering (2010-2011)",
         "hash": "2d3e4f5",
-        "date": "2010",
+        "date": "JUN 2011",
         "org": "University of Pennsylvania",
         "accent": "--c2",
         "bullets": [
@@ -282,17 +270,7 @@
         1
       ],
       "event": "merge",
-      "mergeFromLane": 2,
-      "card": {
-        "title": "Complete education at University of Pennsylvania (MSE track)",
-        "hash": "2e3f4a5",
-        "date": "JUN 2011",
-        "org": "University of Pennsylvania",
-        "accent": "--c2",
-        "bullets": [],
-        "tags": [],
-        "kind": "merge"
-      }
+      "mergeFromLane": 2
     },
     {
       "id": "merge-upenn",

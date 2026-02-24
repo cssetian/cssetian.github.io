@@ -11,7 +11,7 @@
 :root {
   --bg:#070a11; --bg-card:#101a2b; --bg-hover:#132033;
   --border:#23344d; --border-lt:#2c4363;
-  --text-hi:#e8eef8; --text-mid:#9baac1; --text-lo:#7c8aa1; --text-hash:#8b93ff;
+  --text-hi:#e8eef8; --text-mid:#b5c3d8; --text-lo:#98a8c0; --text-hash:#8b93ff;
   --c0:#67e8b1; --c1:#8b93ff; --c2:#ffc67a; --c3:#5ec8ff;
   --font-mono:'JetBrains Mono', monospace;
   --font-display:'Space Grotesk', sans-serif;
@@ -35,10 +35,10 @@
     display:flex; align-items:center; justify-content:space-between;
     border-bottom:1px solid var(--border); background:rgba(13,15,18,.9); backdrop-filter:blur(14px);
   }
-  .h-cmd{font-family:var(--font-mono);font-size:.74rem;color:var(--text-mid)}
+  .h-cmd{font-family:var(--font-mono);font-size:.78rem;color:var(--text-mid)}
   .h-cmd .p{color:var(--c0)} .h-cmd .f{color:var(--c1)}
   .h-nav{display:flex;align-items:center;gap:1.25rem}
-  .h-nav a{font-family:var(--font-mono);font-size:.7rem;color:var(--text-lo);text-decoration:none;transition:color .2s}
+  .h-nav a{font-family:var(--font-mono);font-size:.78rem;color:var(--text-lo);text-decoration:none;transition:color .2s}
   .h-nav a:hover{color:var(--text-hi)}
   .h-nav .btn{padding:.3rem .8rem;border:1px solid var(--c0);color:var(--c0)!important;border-radius:4px;transition:background .2s!important}
   .h-nav .btn:hover{background:rgba(126,231,135,.08)}
@@ -59,7 +59,7 @@
     opacity:.72;
   }
   .hero-meta{display:flex;flex-wrap:wrap;gap:1.25rem;margin-top:1.4rem}
-  .hero-meta span{font-family:var(--font-mono);font-size:.7rem;color:var(--text-lo)}
+  .hero-meta span{font-family:var(--font-mono);font-size:.78rem;color:var(--text-lo)}
   .hero-meta span b{color:var(--text-mid);font-weight:400}
   .hero-summary{
     margin-top:1rem;
@@ -71,15 +71,15 @@
   }
   .stats{display:flex;flex-wrap:wrap;gap:2rem;margin-top:2rem;padding-top:2rem;border-top:1px solid var(--border)}
   .stat-v{font-family:var(--font-display);font-size:1.75rem;line-height:1}
-  .stat-l{font-family:var(--font-mono);font-size:.64rem;color:var(--text-lo);text-transform:uppercase;letter-spacing:.06em}
+  .stat-l{font-family:var(--font-mono);font-size:.7rem;color:var(--text-lo);text-transform:uppercase;letter-spacing:.06em}
 
   .sdiv{max-width:920px;margin:0 auto;padding:0 2rem}
-  .sdiv-inner{font-family:var(--font-mono);font-size:.65rem;color:var(--text-lo);text-transform:uppercase;letter-spacing:.1em;padding:1.2rem 0 .6rem;border-top:1px solid var(--border);display:flex;align-items:center;gap:.75rem}
+  .sdiv-inner{font-family:var(--font-mono);font-size:.7rem;color:var(--text-lo);text-transform:uppercase;letter-spacing:.1em;padding:1.2rem 0 .6rem;border-top:1px solid var(--border);display:flex;align-items:center;gap:.75rem}
   .sdiv-label{white-space:nowrap}
   .sdiv-right{
     margin-left:auto;
     font-family:var(--font-mono);
-    font-size:.62rem;
+    font-size:.68rem;
     letter-spacing:.08em;
     text-transform:none;
     color:var(--c0);
@@ -101,7 +101,7 @@
   .graph-svg-wrap{position:relative}
   .graph-svg-wrap svg{position:absolute;top:0;left:0;width:100%;height:100%;overflow:visible}
 
-  .commit-card{margin:4px 0 4px 14px;padding:.9rem 1.1rem;background:var(--bg-card);border:1px solid var(--border);border-radius:8px;cursor:pointer;transition:background .2s,border-color .2s;position:relative;overflow:hidden}
+  .commit-card{margin:4px 0 4px 14px;padding:1.05rem 1.2rem;background:var(--bg-card);border:1px solid var(--border);border-radius:8px;cursor:pointer;transition:background .2s,border-color .2s;position:relative;overflow:hidden}
   .commit-card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;border-radius:8px 0 0 8px;background:var(--text-hash);opacity:0;transition:opacity .2s}
   .git-row:hover .commit-card{background:var(--bg-hover);border-color:var(--border-lt)}
   .git-row:hover .commit-card::before{opacity:1}
@@ -126,16 +126,16 @@
   .commit-card-marker .cc-title-wrap{gap:0}
   .cc-marker-label{
     font-family:var(--font-mono);
-    font-size:.62rem;
+    font-size:.68rem;
     font-weight:500;
     letter-spacing:.04em;
     color:var(--text-lo);
     opacity:.78;
   }
   .cc-marker-spacer{min-height:8px}
-  .cc-head{display:flex;align-items:flex-start;justify-content:space-between;gap:.75rem}
+  .cc-head{display:flex;align-items:flex-start;justify-content:space-between;gap:.9rem}
   .cc-title-wrap{display:flex;align-items:center;gap:.55rem;min-width:0}
-  .cc-title{font-family:var(--font-display);font-size:1rem;line-height:1.35;letter-spacing:.005em;font-weight:600}
+  .cc-title{font-family:var(--font-display);font-size:1.05rem;line-height:1.4;letter-spacing:.005em;font-weight:600}
   .cc-badge{
     font-family:var(--font-mono);
     font-size:.58rem;
@@ -155,11 +155,11 @@
     color:var(--text-hash);
   }
   .cc-meta{display:flex;align-items:center;gap:.58rem;flex-shrink:0}
-  .cc-hash{font-family:var(--font-mono);font-size:.65rem;color:var(--text-hash);opacity:.55;transition:opacity .2s}
+  .cc-hash{font-family:var(--font-mono);font-size:.72rem;color:var(--text-hash);opacity:.55;transition:opacity .2s}
   .git-row:hover .cc-hash{opacity:1}
   .cc-toggle{
     font-family:var(--font-mono);
-    font-size:.58rem;
+    font-size:.68rem;
     letter-spacing:.05em;
     text-transform:uppercase;
     color:var(--text-lo);
@@ -170,24 +170,24 @@
   .cc-toggle::after{content:'expand';padding-left:.1rem}
   .git-row.open .cc-toggle::before{content:'-'}
   .git-row.open .cc-toggle::after{content:'collapse'}
-  .cc-date{font-family:var(--font-mono);font-size:.65rem;color:var(--text-lo)}
-  .cc-org{font-family:var(--font-mono);font-size:.68rem;color:var(--text-lo);margin:.3rem 0 0}
+  .cc-date{font-family:var(--font-mono);font-size:.72rem;color:var(--text-lo)}
+  .cc-org{font-family:var(--font-mono);font-size:.74rem;color:var(--text-lo);margin:.5rem 0 0}
   .cc-body{height:0;overflow:hidden;opacity:0;transition:height .42s var(--ease),opacity .28s var(--ease);will-change:height,opacity}
   .git-row.open .cc-body{opacity:1}
-  .cc-msg{font-size:.85rem;line-height:1.75;color:var(--text-mid);margin-top:.7rem;padding-top:.7rem;border-top:1px solid var(--border);list-style:none;display:flex;flex-direction:column;gap:.35rem}
+  .cc-msg{font-size:.93rem;line-height:1.75;color:var(--text-mid);margin-top:.9rem;padding-top:.85rem;border-top:1px solid var(--border);list-style:none;display:flex;flex-direction:column;gap:.45rem}
   .cc-msg li{display:flex;gap:.55rem;align-items:flex-start}
   .cc-msg li::before{content:'·';color:var(--accent,var(--c0));font-family:var(--font-mono);flex-shrink:0;line-height:1.75}
   .tags{display:flex;flex-wrap:wrap;gap:.35rem;margin-top:.7rem}
-  .tag{font-family:var(--font-mono);font-size:.6rem;padding:.18rem .45rem;border-radius:3px;border:1px solid var(--border-lt);color:var(--text-lo)}
+  .tag{font-family:var(--font-mono);font-size:.67rem;padding:.2rem .5rem;border-radius:3px;border:1px solid var(--border-lt);color:var(--text-lo)}
 
   .skills{max-width:920px;margin:0 auto;padding:0 2rem 2rem;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.9rem}
   .sk-group{background:var(--bg-card);border:1px solid var(--border);border-radius:8px;padding:.9rem}
-  .sk-label{font-family:var(--font-mono);font-size:.62rem;color:var(--text-lo);text-transform:uppercase;letter-spacing:.08em;margin-bottom:.5rem}
+  .sk-label{font-family:var(--font-mono);font-size:.68rem;color:var(--text-lo);text-transform:uppercase;letter-spacing:.08em;margin-bottom:.5rem}
   .sk-chips{display:flex;flex-wrap:wrap;gap:.3rem}
-  .sk-chip{font-family:var(--font-mono);font-size:.65rem;color:var(--text-mid);padding:.14rem .42rem;background:var(--bg);border:1px solid var(--border);border-radius:3px}
+  .sk-chip{font-family:var(--font-mono);font-size:.72rem;color:var(--text-mid);padding:.16rem .45rem;background:var(--bg);border:1px solid var(--border);border-radius:3px}
 
   footer{border-top:1px solid var(--border);padding:2rem;text-align:center}
-  .foot-inner{font-family:var(--font-mono);font-size:.65rem;color:var(--text-lo);display:flex;align-items:center;justify-content:center;gap:.9rem;flex-wrap:wrap}
+  .foot-inner{font-family:var(--font-mono);font-size:.72rem;color:var(--text-lo);display:flex;align-items:center;justify-content:center;gap:.9rem;flex-wrap:wrap}
   .foot-inner a{color:var(--text-lo);text-decoration:none;transition:color .2s}
   .foot-inner a:hover{color:var(--text-mid)}
 
@@ -249,6 +249,7 @@ const COLORS = ['--c0','--c1','--c2','--c3'];
 
 let COMMITS = [];
 let MARKER_LABELS = new Map();
+let ROLE_END_DATES = new Map();
 let rowEls = [];
 let svgW = 64;
 let observer;
@@ -308,9 +309,16 @@ function markerEntityName(rawTitle, fallbackOrg) {
 
 function formatCommitMonthYear(rawDate) {
   const value = (rawDate || '').trim();
-  const toCapitalCaseMonth = month => month.charAt(0).toUpperCase() + month.slice(1).toLowerCase();
-  const monthYearMatch = value.match(/^([A-Za-z]{3})\s+(\d{4})$/);
-  if (monthYearMatch) return `${toCapitalCaseMonth(monthYearMatch[1])} ${monthYearMatch[2]}`;
+  const monthYearMatch = value.match(/^([A-Za-z]+)\s+(\d{4})$/);
+  if (monthYearMatch) {
+    const monthToken = monthYearMatch[1].slice(0, 3).toLowerCase();
+    const monthMap = {
+      jan: 'Jan', feb: 'Feb', mar: 'Mar', apr: 'Apr', may: 'May', jun: 'Jun',
+      jul: 'Jul', aug: 'Aug', sep: 'Sep', oct: 'Oct', nov: 'Nov', dec: 'Dec'
+    };
+    const month = monthMap[monthToken] || (monthToken.charAt(0).toUpperCase() + monthToken.slice(1));
+    return `${month} ${monthYearMatch[2]}`;
+  }
 
   const yearMatch = value.match(/^(\d{4})$/);
   if (yearMatch) return `Jan ${yearMatch[1]}`;
@@ -325,14 +333,29 @@ function computeMarkerLabels(commits) {
   const labels = new Map();
   const openForkByLane = new Map();
 
-  commits.forEach(commit => {
+  const findBranchSeed = (fromIdx, toIdx, lane) => {
+    for (let idx = fromIdx; idx < toIdx; idx += 1) {
+      const c = commits[idx];
+      if (!c || c.lane !== lane) continue;
+      if (!c.card) continue;
+      return c;
+    }
+    return null;
+  };
+
+  const startDateFromTitleRange = (title = '') => {
+    const m = title.match(/\((\d{4})\s*[-–]\s*\d{4}\)/);
+    return m ? `Jan ${m[1]}` : '';
+  };
+
+  commits.forEach((commit, idx) => {
     if (!isMarkerCommit(commit)) return;
 
     if (commit.event === 'fork') {
       const childLane = commit.forkToLane;
       if (typeof childLane !== 'number') return;
       if (!openForkByLane.has(childLane)) openForkByLane.set(childLane, []);
-      openForkByLane.get(childLane).push(commit);
+      openForkByLane.get(childLane).push({ commit, idx });
       return;
     }
 
@@ -341,9 +364,16 @@ function computeMarkerLabels(commits) {
       const stack = openForkByLane.get(childLane);
       if (!stack || !stack.length) return;
 
-      const forkCommit = stack.pop();
-      const entity = markerEntityName(forkCommit.card?.title, forkCommit.card?.org || commit.card?.org);
-      const startDate = forkCommit.card?.date ? formatCommitMonthYear(forkCommit.card.date) : '';
+      const { commit: forkCommit, idx: forkIdx } = stack.pop();
+      // Show branch labels only for top-level branches (forked from main lane).
+      // This suppresses nested sub-track labels like MSE under UPenn.
+      if (forkCommit.lane !== 0) return;
+
+      const branchSeed = findBranchSeed(forkIdx + 1, idx, childLane);
+      const fallbackOrg = forkCommit.card?.org || branchSeed?.card?.org || commit.card?.org;
+      const entity = markerEntityName(forkCommit.card?.title, fallbackOrg);
+      const startRaw = forkCommit.card?.date || branchSeed?.card?.date || startDateFromTitleRange(branchSeed?.card?.title || '');
+      const startDate = startRaw ? formatCommitMonthYear(startRaw) : '';
       const endDate = commit.card?.date ? formatCommitMonthYear(commit.card.date) : '';
       const dateRange = startDate && endDate ? `${startDate} - ${endDate}` : (startDate || endDate || '');
       const label = dateRange ? `${entity} \u00b7 ${dateRange}` : entity;
@@ -353,6 +383,43 @@ function computeMarkerLabels(commits) {
   });
 
   return labels;
+}
+
+function isEducationOrg(org = '') {
+  return /University|Thomas Jefferson/i.test(org);
+}
+
+function computeRoleEndDates(commits) {
+  const roleEndDates = new Map();
+
+  commits.forEach((commit, idx) => {
+    const card = commit.card || {};
+    if (card.kind !== 'role' || !card.org || isEducationOrg(card.org)) return;
+
+    const lane = commit.lane;
+    let endRaw = card.date || '';
+
+    for (let i = idx + 1; i < commits.length; i += 1) {
+      const next = commits[i];
+      if (!next) continue;
+
+      const nextCard = next.card || {};
+      if (next.event === 'merge' && next.mergeFromLane === lane && nextCard.date) {
+        endRaw = nextCard.date;
+        break;
+      }
+
+      if (next.lane !== lane) continue;
+      if (nextCard.kind === 'role' && nextCard.date) {
+        endRaw = nextCard.date;
+        break;
+      }
+    }
+
+    roleEndDates.set(commit.id, endRaw);
+  });
+
+  return roleEndDates;
 }
 
 function maxLanes() {
@@ -506,7 +573,8 @@ function buildCard(commit) {
 
   const bullets = card.bullets.map(b => `<li>${b}</li>`).join('');
   const tags = card.tags.map(t => `<span class="tag">${t}</span>`).join('');
-  const commitStamp = `@cssetian committed ${formatCommitMonthYear(card.date)}`;
+  const stampSource = ROLE_END_DATES.get(commit.id) || card.date;
+  const commitStamp = `@cssetian committed ${formatCommitMonthYear(stampSource)}`;
   div.innerHTML = `
     <div class="cc-head">
       <div class="cc-title-wrap"><div class="cc-title">${card.title}</div></div>
@@ -631,6 +699,7 @@ function renderCommits(commits) {
   // Data is stored earliest -> latest; render latest -> earliest.
   // Keep event semantics and apply reverse-time geometry in drawAll().
   MARKER_LABELS = computeMarkerLabels(commits);
+  ROLE_END_DATES = computeRoleEndDates(commits);
   COMMITS = [...commits].reverse();
   const log = document.getElementById('gitLog');
   log.innerHTML = '';
