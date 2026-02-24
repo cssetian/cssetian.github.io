@@ -40,7 +40,7 @@
   .h-nav{display:flex;align-items:center;gap:1.25rem}
   .h-nav a{font-family:var(--font-mono);font-size:.78rem;color:var(--text-lo);text-decoration:none;transition:color .2s}
   .h-nav a:hover{color:var(--text-hi)}
-  .h-nav .btn{padding:.3rem .8rem;border:1px solid var(--c0);color:var(--c0)!important;border-radius:4px;transition:background .2s!important}
+  .h-nav .btn{padding:.3rem .8rem;border:1px solid var(--c0);color:var(--c0)!important;border-radius:4px;transition:background .2s!important;white-space:nowrap;flex-shrink:0}
   .h-nav .btn:hover{background:rgba(126,231,135,.08)}
 
   .hero{max-width:920px;margin:0 auto;padding:5rem 2rem 3rem;animation:fadeUp .8s var(--ease) both}
@@ -74,7 +74,19 @@
   .stat-l{font-family:var(--font-mono);font-size:.7rem;color:var(--text-lo);text-transform:uppercase;letter-spacing:.06em}
 
   .sdiv{max-width:920px;margin:0 auto;padding:0 2rem}
-  .sdiv-inner{font-family:var(--font-mono);font-size:.7rem;color:var(--text-lo);text-transform:uppercase;letter-spacing:.1em;padding:1.2rem 0 .6rem;border-top:1px solid var(--border);display:flex;align-items:center;gap:.75rem}
+  .sdiv-inner{
+    font-family:var(--font-mono);
+    font-size:.74rem;
+    font-weight:500;
+    color:var(--text-mid);
+    text-transform:uppercase;
+    letter-spacing:.12em;
+    padding:1.5rem 0 .78rem;
+    border-top:1px solid var(--border-lt);
+    display:flex;
+    align-items:center;
+    gap:.82rem;
+  }
   .sdiv-label{white-space:nowrap}
   .sdiv-right{
     margin-left:auto;
@@ -84,9 +96,9 @@
     text-transform:none;
     color:var(--c0);
     white-space:nowrap;
-    opacity:.9;
+    opacity:1;
   }
-  .sdiv-inner::after{content:'';flex:1;height:1px;background:var(--border)}
+  .sdiv-inner::after{content:'';flex:1;height:1px;background:var(--border-lt)}
   .fold>summary{list-style:none;cursor:pointer}
   .fold>summary::-webkit-details-marker{display:none}
   .fold>summary .sdiv-inner::before{content:'+';font-family:var(--font-mono);color:var(--text-lo)}
@@ -196,7 +208,28 @@
     .hero-name{font-size:2.3rem}.stats{gap:1.25rem}.cc-head{flex-direction:column;gap:.2rem}
     .skills{grid-template-columns:1fr}
     header,.git-log,.hero,.sdiv,.skills{padding-left:1rem;padding-right:1rem}
-    .h-nav a:not(.btn){display:none}
+    header{
+      height:auto;
+      flex-direction:column;
+      align-items:stretch;
+      gap:.45rem;
+      padding-top:.55rem;
+      padding-bottom:.55rem;
+    }
+    .h-cmd{
+      width:100%;
+      overflow-x:auto;
+      white-space:nowrap;
+      scrollbar-width:none;
+    }
+    .h-cmd::-webkit-scrollbar{display:none}
+    .h-nav{
+      width:100%;
+      justify-content:space-between;
+      flex-wrap:wrap;
+      gap:.7rem;
+    }
+    .h-nav a{display:inline-flex}
   }
 </style>
 </head>
