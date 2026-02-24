@@ -61,6 +61,14 @@
   .hero-meta{display:flex;flex-wrap:wrap;gap:1.25rem;margin-top:1.4rem}
   .hero-meta span{font-family:var(--font-mono);font-size:.7rem;color:var(--text-lo)}
   .hero-meta span b{color:var(--text-mid);font-weight:400}
+  .hero-summary{
+    margin-top:1rem;
+    max-width:76ch;
+    color:var(--text-mid);
+    font-size:.98rem;
+    line-height:1.65;
+    letter-spacing:.002em;
+  }
   .stats{display:flex;flex-wrap:wrap;gap:2rem;margin-top:2rem;padding-top:2rem;border-top:1px solid var(--border)}
   .stat-v{font-family:var(--font-display);font-size:1.75rem;line-height:1}
   .stat-l{font-family:var(--font-mono);font-size:.64rem;color:var(--text-lo);text-transform:uppercase;letter-spacing:.06em}
@@ -172,7 +180,7 @@
   .tags{display:flex;flex-wrap:wrap;gap:.35rem;margin-top:.7rem}
   .tag{font-family:var(--font-mono);font-size:.6rem;padding:.18rem .45rem;border-radius:3px;border:1px solid var(--border-lt);color:var(--text-lo)}
 
-  .skills{max-width:920px;margin:0 auto;padding:0 2rem 2rem;display:grid;grid-template-columns:1fr 1fr 2fr;gap:.9rem}
+  .skills{max-width:920px;margin:0 auto;padding:0 2rem 2rem;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.9rem}
   .sk-group{background:var(--bg-card);border:1px solid var(--border);border-radius:8px;padding:.9rem}
   .sk-label{font-family:var(--font-mono);font-size:.62rem;color:var(--text-lo);text-transform:uppercase;letter-spacing:.08em;margin-bottom:.5rem}
   .sk-chips{display:flex;flex-wrap:wrap;gap:.3rem}
@@ -208,6 +216,7 @@
   <div class="hero-tag" id="heroTag"></div>
   <h1 class="hero-name" id="heroName"></h1>
   <div class="hero-meta" id="heroMeta"></div>
+  <p class="hero-summary" id="heroSummary"></p>
   <div class="stats" id="heroStats"></div>
 </section>
 
@@ -278,7 +287,7 @@ function setRowExpanded(row, expanded) {
 
 function isMarkerCommit(commit) {
   if (!commit || commit.isInit) return false;
-  return commit.card?.kind === 'transition' || commit.event === 'fork' || commit.event === 'merge';
+  return commit.event === 'fork' || commit.event === 'merge' || commit.card?.kind === 'transition';
 }
 
 function markerSpacingClass(commit) {
@@ -467,18 +476,9 @@ function drawAll() {
 }
 
 function buildCard(commit) {
-  const { card, isInit } = commit;
+  const { card, event, isInit } = commit;
   const div = document.createElement('div');
   div.className = 'commit-card';
-  if (card.kind === 'role') div.classList.add('commit-card-role');
-  div.style.setProperty('--accent', `var(${card.accent})`);
-
-  if (isInit) {
-    div.style.opacity = '.4';
-    div.style.cursor = 'default';
-    div.innerHTML = `<div class="cc-head"><div class="cc-title" style="font-style:italic;color:var(--text-mid)">${card.title}</div><div class="cc-meta"><span class="cc-hash">${card.hash}</span><span class="cc-date">${card.date}</span></div></div>`;
-    return div;
-  }
 
   if (isMarkerCommit(commit)) {
     div.classList.add('commit-card-marker');
@@ -492,6 +492,17 @@ function buildCard(commit) {
     div.innerHTML = `<div class="cc-head"><div class="cc-title-wrap"><div class="cc-title cc-marker-label">${markerLabel}</div></div></div>`;
     return div;
   }
+
+  if (event !== 'fork' && event !== 'merge' && card.kind === 'role') div.classList.add('commit-card-role');
+  div.style.setProperty('--accent', `var(${card.accent})`);
+
+  if (isInit) {
+    div.style.opacity = '.4';
+    div.style.cursor = 'default';
+    div.innerHTML = `<div class="cc-head"><div class="cc-title" style="font-style:italic;color:var(--text-mid)">${card.title}</div><div class="cc-meta"><span class="cc-hash">${card.hash}</span><span class="cc-date">${card.date}</span></div></div>`;
+    return div;
+  }
+
 
   const bullets = card.bullets.map(b => `<li>${b}</li>`).join('');
   const tags = card.tags.map(t => `<span class="tag">${t}</span>`).join('');
@@ -539,6 +550,11 @@ function renderHero(hero) {
     span.innerHTML = item;
     heroMeta.appendChild(span);
   });
+
+  const heroSummary = document.getElementById('heroSummary');
+  const summary = (hero.summary || '').trim();
+  heroSummary.textContent = summary;
+  heroSummary.style.display = summary ? '' : 'none';
 
   const heroStats = document.getElementById('heroStats');
   heroStats.innerHTML = '';

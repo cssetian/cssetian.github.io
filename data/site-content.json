@@ -31,6 +31,7 @@
     "tag": "git log --author",
     "name": "Christopher Setian",
     "subtitle": "Engineering Leader / Former CTO",
+    "summary": "Engineering leader and former CTO with experience scaling teams, building AI-first products, and leading complex technical and organizational pivots. Proven track record delivering LLM-powered platforms, developing senior engineering leaders, and partnering cross-functionally to drive product-market fit at scale.",
     "meta": [
       "author <b>Christopher Setian &lt;chris.setian@gmail.com&gt;</b>",
       "HEAD → <b style=\"color:var(--c0)\">main</b>",
@@ -47,11 +48,11 @@
       },
       {
         "value": "6",
-        "label": "companies"
+        "label": "products launched"
       },
       {
-        "value": "6",
-        "label": "products launched"
+        "value": "1",
+        "label": "company founded"
       },
       {
         "value": "$6M",
@@ -75,35 +76,33 @@
         "Elasticsearch",
         "Vector Databases",
         "Vercel AI SDK",
-        "Inference Architecture"
+        "Inference Architecture",
+        "DAG Workflow Design"
       ]
     },
     {
       "label": "Architecture / Platform",
       "chips": [
-        "Full-stack Development",
-        "API and SDK Design",
-        "Data Ingestion and ETL",
-        "Workflow Automation",
-        "LLM Platform Architecture",
-        "Model Evaluation",
-        "Active Learning",
+        "Full-Stack Development",
+        "API & SDK Design",
+        "Data Ingestion & ETL",
         "Search Infrastructure",
-        "Geospatial Visualization",
-        "AI Search Optimization"
+        "Model Inferencing Architecture",
+        "Answer Engine Optimization",
+        "Application Layer LLM Products"
       ]
     },
     {
       "label": "Leadership",
       "chips": [
-        "Org Design (Team Topologies, Charters)",
-        "Multi-Team Planning & Quarterly Roadmapping",
+        "Org Design (Topologies, Charters)",
+        "Multi-Team Strategy & Planning",
         "EM/Staff Leadership Development",
-        "Senior Hiring (EM/Staff+) and Calibration",
-        "Cross-Functional Product/Engineering Alignment",
-        "KPI-Driven Execution and Operating Cadence",
-        "Scale-Up Leadership (6→20 Engineers)",
-        "Founder-Level Product + Technical Strategy"
+        "Senior Hiring and Calibration",
+        "Cross-Functional Alignment",
+        "KPI-Driven Execution",
+        "Team Scaling",
+        "Founder-Level Strategy"
       ]
     }
   ],
@@ -177,10 +176,7 @@
         "bullets": [
           "Started education."
         ],
-        "tags": [
-          "TJHSST",
-          "Education"
-        ],
+        "tags": [],
         "kind": "fork"
       }
     },
@@ -201,10 +197,7 @@
         "bullets": [
           "Graduated in 2007."
         ],
-        "tags": [
-          "TJHSST",
-          "Education"
-        ],
+        "tags": [],
         "kind": "role"
       }
     },
@@ -215,22 +208,7 @@
         0
       ],
       "event": "merge",
-      "mergeFromLane": 1,
-      "card": {
-        "title": "Complete education at Thomas Jefferson High School for Science and Technology",
-        "hash": "1c2d3e4",
-        "date": "2007",
-        "org": "Alexandria, Virginia",
-        "accent": "--c3",
-        "bullets": [
-          "Graduated high school in 2007."
-        ],
-        "tags": [
-          "TJHSST",
-          "Education"
-        ],
-        "kind": "merge"
-      }
+      "mergeFromLane": 1
     },
     {
       "id": "fork-upenn",
@@ -240,22 +218,7 @@
         1
       ],
       "event": "fork",
-      "forkToLane": 1,
-      "card": {
-        "title": "Begin education at University of Pennsylvania",
-        "hash": "2a3b4c5",
-        "date": "2007",
-        "org": "University of Pennsylvania",
-        "accent": "--c3",
-        "bullets": [
-          "Education chapter start at UPenn."
-        ],
-        "tags": [
-          "UPenn",
-          "Education"
-        ],
-        "kind": "fork"
-      }
+      "forkToLane": 1
     },
     {
       "id": "upenn-bse-role",
@@ -274,10 +237,7 @@
         "bullets": [
           "Completed Bachelor of Science in Engineering in Electrical Engineering."
         ],
-        "tags": [
-          "BSE",
-          "Electrical Engineering"
-        ],
+        "tags": [],
         "kind": "role"
       }
     },
@@ -290,22 +250,7 @@
         2
       ],
       "event": "fork",
-      "forkToLane": 2,
-      "card": {
-        "title": "Begin education at University of Pennsylvania (MSE track)",
-        "hash": "2c3d4e5",
-        "date": "2010",
-        "org": "University of Pennsylvania",
-        "accent": "--c3",
-        "bullets": [
-          "Started MSE during junior year of BSE."
-        ],
-        "tags": [
-          "MSE",
-          "Branch of Branch"
-        ],
-        "kind": "fork"
-      }
+      "forkToLane": 2
     },
     {
       "id": "upenn-mse-role",
@@ -325,10 +270,7 @@
         "bullets": [
           "Completed Master of Science in Engineering in Electrical Engineering."
         ],
-        "tags": [
-          "MSE",
-          "Electrical Engineering"
-        ],
+        "tags": [],
         "kind": "role"
       }
     },
@@ -344,15 +286,11 @@
       "card": {
         "title": "Complete education at University of Pennsylvania (MSE track)",
         "hash": "2e3f4a5",
-        "date": "2011",
+        "date": "JUN 2011",
         "org": "University of Pennsylvania",
         "accent": "--c2",
-        "bullets": [
-          "MSE track completed in 2011."
-        ],
-        "tags": [
-          "MSE Complete"
-        ],
+        "bullets": [],
+        "tags": [],
         "kind": "merge"
       }
     },
@@ -367,15 +305,11 @@
       "card": {
         "title": "Complete education at University of Pennsylvania",
         "hash": "2f4a5b6",
-        "date": "2011",
+        "date": "JUN 2011",
         "org": "University of Pennsylvania",
         "accent": "--c3",
-        "bullets": [
-          "Closed UPenn education chapter and moved into industry."
-        ],
-        "tags": [
-          "UPenn Complete"
-        ],
+        "bullets": [],
+        "tags": [],
         "kind": "merge"
       }
     },
@@ -421,8 +355,8 @@
           "Built analytics tools for financial trade and deal flow data; managed and mentored interns."
         ],
         "tags": [
-          "Analytics",
-          "Mentorship"
+          "Full-Stack Development",
+          "EM/Staff Leadership Development"
         ],
         "kind": "role"
       }
@@ -492,8 +426,8 @@
           "Built full-stack data management and visualization tools for private equity workflows."
         ],
         "tags": [
-          "Full-stack",
-          "Data Visualization"
+          "Full-Stack Development",
+          "Data Ingestion & ETL"
         ],
         "kind": "role"
       }
@@ -565,8 +499,9 @@
           "Owned core data services supporting  document and blueprint ingestion for PlanGrid's flagship product."
         ],
         "tags": [
-          "Web",
-          "ML Product"
+          "Full-Stack Development",
+          "Data Ingestion & ETL",
+          "Workflow Automation"
         ],
         "kind": "role"
       }
@@ -639,8 +574,9 @@
           "Designed a version-controlled “git-for-maps” system enabling secure parallelization and scaling of geospatial editing, traceability, and map update release cycles."
         ],
         "tags": [
-          "Geospatial",
-          "Platform Architecture"
+          "Geospatial Visualization",
+          "Workflow Automation",
+          "API & SDK Design"
         ],
         "kind": "role"
       }
@@ -669,8 +605,9 @@
           "Robust labeling operations management tools to maintain complex mapping workflows."
         ],
         "tags": [
-          "Engineering Management",
-          "Roadmap"
+          "EM/Staff Leadership Development",
+          "KPI-Driven Execution",
+          "Geospatial Visualization"
         ],
         "kind": "role"
       }
@@ -745,8 +682,9 @@
           "Mentored and sponsored six engineers to promotions into senior and staff leadership roles."
         ],
         "tags": [
-          "Team Building",
-          "Execution"
+          "Data Ingestion & ETL",
+          "Senior Hiring and Calibration",
+          "EM/Staff Leadership Development"
         ],
         "kind": "role"
       }
@@ -772,8 +710,11 @@
           "Led development of core platform capabilities including search (structured \\+ embedding-based), model error analysis, and public APIs/SDKs."
         ],
         "tags": [
-          "Org Scaling",
-          "Roadmapping"
+          "Team Scaling",
+          "Org Design (Topologies, Charters)",
+          "Multi-Team Strategy & Planning",
+          "Search Infrastructure",
+          "API & SDK Design"
         ],
         "kind": "role"
       }
@@ -800,8 +741,9 @@
           "Owned data ingestion, structured/unstructured search, model analysis, external APIs, and exports/ETL."
         ],
         "tags": [
-          "Director",
-          "ML Products"
+          "Search Infrastructure",
+          "Data Ingestion & ETL",
+          "Senior Hiring and Calibration"
         ],
         "kind": "role"
       }
@@ -872,18 +814,21 @@
           "Led technical vision through two shipped products and multiple strategic pivots, using engagement, retention, and system metrics to assess PMF and guide high-conviction product decisions.",
           "Launched Concierge AI, a B2B, agentic, embeddable chat platform for AI-driven customer education and higher-quality top-of-funnel sales engagement on SaaS marketing websites.",
           "Began pilot in Dec 2025, scaling to sixteen trials with eight paying customers and five-figure ARR.",
-          "Shipped a complementary AI Engine Optimization (AEO) product providing visibility into brand performance within AI search and answer engines, with actionable improvement guidance.",
-          "Launched Centrifuse,  a conversational AI platform unifying 20+ third-party SaaS APIs into a single chat-based experience for cross-product querying and action.",
-          "Scaled B2C Centrifuse product to 13,500 users and a #2 ProductHunt launch, reaching 5-figure ARR.",
+          "Shipped a complementary Answer Engine Optimization (AEO) product providing visibility into brand performance within AI search and answer engines, with actionable improvement guidance.",
+          "Launched Centrifuse, a B2C conversational AI prosumer platform unifying 20+ third-party SaaS APIs into a single chat-based experience for cross-product querying and action.",
+          "Scaled Centrifuse product to 13,500 users and a #2 ProductHunt launch, reaching 5-figure ARR.",
           "Led architecture of a unified LLM tool-calling layer to rapidly scale third-party product support.",
           "Recruited, interviewed, and hired five senior and staff-level engineers, building a high-ownership culture.",
           "Raised $6MM across two rounds from top-tier VCs (incl. Gradient Ventures, Race Capital, Hitachi Ventures)."
         ],
         "tags": [
-          "CTO",
-          "LLMs",
-          "Hiring",
-          "Fundraising"
+          "Founder-Level Strategy",
+          "Answer Engine Optimization",
+          "Application Layer LLM Products",
+          "API & SDK Design",
+          "Senior Hiring and Calibration",
+          "DAG Workflow Design",
+          "Inference Architecture"
         ],
         "kind": "role"
       }
