@@ -23,6 +23,7 @@
         "label": "↓ resume.pdf",
         "href": "resume.pdf",
         "target": "_blank",
+        "download": "Resume - Christopher Setian.pdf",
         "className": "btn"
       }
     ]

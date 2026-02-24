@@ -635,6 +635,7 @@ function renderHeader(header) {
     a.textContent = link.label;
     a.href = link.href;
     if (link.target) a.target = link.target;
+    if (link.download) a.download = link.download;
     if (link.className) a.className = link.className;
     nav.appendChild(a);
   });
