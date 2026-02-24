@@ -39,15 +39,15 @@
     "stats": [
       {
         "value": "14+",
-        "label": "years shipped"
-      },
-      {
-        "value": "6",
-        "label": "companies"
+        "label": "years shipping"
       },
       {
         "value": "7+",
         "label": "years leadership"
+      },
+      {
+        "value": "6",
+        "label": "companies"
       },
       {
         "value": "6",
@@ -63,41 +63,39 @@
     {
       "label": "Frontend",
       "chips": [
-        "React",
-        "SPA",
-        "2D/3D Visualization",
-        "Geospatial UI",
-        "Performance"
+        "Geospatial Visualization Systems"
       ]
     },
     {
       "label": "Backend / Platform",
       "chips": [
-        "APIs",
-        "ETL",
-        "Data Ingestion",
-        "Workflows",
-        "SDKs"
+        "Full-stack Platform Engineering",
+        "API and SDK Platform",
+        "Data Ingestion and ETL",
+        "Workflow Automation"
       ]
     },
     {
       "label": "AI / ML Product",
       "chips": [
-        "LLMs",
-        "Agentic Systems",
+        "AI Product Strategy",
+        "LLM Platform Architecture",
         "Model Evaluation",
         "Active Learning",
-        "AEO"
+        "AI Search Optimization (AEO)"
       ]
     },
     {
       "label": "Leadership",
       "chips": [
-        "Org Scaling",
-        "Hiring",
-        "EM Development",
-        "Cross-functional Strategy",
-        "Technical Vision"
+        "Org Design (Team Topologies, Charters)",
+        "Multi-Team Planning & Quarterly Roadmapping",
+        "EM/Staff Leadership Development",
+        "Senior Hiring (EM/Staff+) and Calibration",
+        "Cross-Functional Product/Engineering Alignment",
+        "KPI-Driven Execution and Operating Cadence",
+        "Scale-Up Leadership (6→20 Engineers)",
+        "Founder-Level Product + Technical Strategy"
       ]
     }
   ],
@@ -165,7 +163,7 @@
       "card": {
         "title": "Thomas Jefferson High School for Science and Technology",
         "hash": "1a2b3c4",
-        "date": "2007",
+        "date": "2004",
         "org": "Alexandria, Virginia",
         "accent": "--c3",
         "bullets": [
@@ -187,7 +185,7 @@
       ],
       "event": null,
       "card": {
-        "title": "Student (2007-2007)",
+        "title": "Student (2004-2007)",
         "hash": "1b2c3d4",
         "date": "2007",
         "org": "Thomas Jefferson High School for Science and Technology",
@@ -725,7 +723,7 @@
       ],
       "event": null,
       "card": {
-        "title": "Engineering Manager (2021-2021)",
+        "title": "Engineering Manager (2021)",
         "hash": "7b8c9d0",
         "date": "2021",
         "org": "Labelbox",

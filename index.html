@@ -48,7 +48,7 @@
   .hero-name{font-family:var(--font-display);font-size:clamp(2.6rem,5.5vw,4.8rem);line-height:1.06;letter-spacing:-.02em}
   .hero-name em{
     display:block;
-    margin-top:.45rem;
+    margin-top:.62rem;
     font-family:var(--font-mono);
     font-size:clamp(.72rem,1.5vw,.95rem);
     line-height:1.25;
@@ -171,11 +171,11 @@
   <div class="stats" id="heroStats"></div>
 </section>
 
-<div class="sdiv"><div class="sdiv-inner">commit history</div></div>
-<main class="git-log" id="gitLog"></main>
-
 <div class="sdiv"><div class="sdiv-inner">tech stack</div></div>
 <section class="skills" id="skills"></section>
+
+<div class="sdiv"><div class="sdiv-inner">commit history</div></div>
+<main class="git-log" id="gitLog"></main>
 
 <footer>
   <div class="foot-inner" id="footerInner"></div>
@@ -540,10 +540,10 @@ function renderCommits(commits) {
         observer.unobserve(e.target);
       }
     });
-  }, { threshold: 0.06 });
+  }, { threshold: 0.01, rootMargin: '0px 0px 28% 0px' });
 
   rowEls.forEach(({ row }, i) => {
-    row.style.transitionDelay = `${i * 0.06}s`;
+    row.style.transitionDelay = `${Math.min(i * 0.02, 0.18)}s`;
     observer.observe(row);
   });
 
