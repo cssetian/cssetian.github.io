@@ -6,7 +6,7 @@
 <title>git log</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500&family=DM+Serif+Display:ital@0;1&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500&family=Space+Grotesk:wght@500;600;700&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
 <style>
 :root {
   --bg:#070a11; --bg-card:#101a2b; --bg-hover:#132033;
@@ -14,7 +14,7 @@
   --text-hi:#e8eef8; --text-mid:#9baac1; --text-lo:#7c8aa1; --text-hash:#8b93ff;
   --c0:#67e8b1; --c1:#8b93ff; --c2:#ffc67a; --c3:#5ec8ff;
   --font-mono:'JetBrains Mono', monospace;
-  --font-display:'DM Serif Display', serif;
+  --font-display:'Space Grotesk', sans-serif;
   --font-sans:'DM Sans', sans-serif;
   --ease:cubic-bezier(0.16,1,0.3,1);
 }
@@ -67,6 +67,17 @@
 
   .sdiv{max-width:920px;margin:0 auto;padding:0 2rem}
   .sdiv-inner{font-family:var(--font-mono);font-size:.65rem;color:var(--text-lo);text-transform:uppercase;letter-spacing:.1em;padding:1.2rem 0 .6rem;border-top:1px solid var(--border);display:flex;align-items:center;gap:.75rem}
+  .sdiv-label{white-space:nowrap}
+  .sdiv-right{
+    margin-left:auto;
+    font-family:var(--font-mono);
+    font-size:.62rem;
+    letter-spacing:.08em;
+    text-transform:none;
+    color:var(--c0);
+    white-space:nowrap;
+    opacity:.9;
+  }
   .sdiv-inner::after{content:'';flex:1;height:1px;background:var(--border)}
   .fold>summary{list-style:none;cursor:pointer}
   .fold>summary::-webkit-details-marker{display:none}
@@ -89,25 +100,34 @@
   .commit-card-role{border-color:var(--border-lt)}
   .git-row:hover .commit-card-role::before{opacity:1}
   .commit-card-marker{
-    padding:.45rem 1.1rem .45rem .8rem;
-    background:var(--bg-card);
-    border-color:var(--border);
-    border-style:dashed;
+    margin:2px 0 2px 10px;
+    padding:.16rem .35rem;
+    background:transparent;
+    border:none;
     cursor:default;
   }
-  .commit-card-marker.marker-join{margin-bottom:10px}
-  .commit-card-marker.marker-leave{margin-top:10px}
-  .commit-card-marker::before{opacity:.18;width:2px}
+  .commit-card-marker.marker-join{margin-bottom:8px}
+  .commit-card-marker.marker-leave{margin-top:8px}
+  .commit-card-marker::before{display:none}
   .git-row:hover .commit-card-marker{
-    background:var(--bg-card);
-    border-color:var(--border);
+    background:transparent;
+    border:none;
   }
-  .git-row:hover .commit-card-marker::before{opacity:.18}
-  .commit-card-marker .cc-title{font-size:.93rem;color:var(--text-lo)}
-  .commit-card-marker .cc-date{font-size:.62rem}
+  .git-row:hover .commit-card-marker::before{display:none}
+  .commit-card-marker .cc-head{justify-content:flex-start}
+  .commit-card-marker .cc-title-wrap{gap:0}
+  .cc-marker-label{
+    font-family:var(--font-mono);
+    font-size:.62rem;
+    font-weight:500;
+    letter-spacing:.04em;
+    color:var(--text-lo);
+    opacity:.78;
+  }
+  .cc-marker-spacer{min-height:8px}
   .cc-head{display:flex;align-items:flex-start;justify-content:space-between;gap:.75rem}
   .cc-title-wrap{display:flex;align-items:center;gap:.55rem;min-width:0}
-  .cc-title{font-family:var(--font-display);font-size:1rem;line-height:1.35;letter-spacing:.01em;font-weight:600}
+  .cc-title{font-family:var(--font-display);font-size:1rem;line-height:1.35;letter-spacing:.005em;font-weight:600}
   .cc-badge{
     font-family:var(--font-mono);
     font-size:.58rem;
@@ -126,12 +146,24 @@
     border-color:var(--text-hash);
     color:var(--text-hash);
   }
-  .cc-meta{display:flex;align-items:center;gap:.6rem;flex-shrink:0}
+  .cc-meta{display:flex;align-items:center;gap:.58rem;flex-shrink:0}
   .cc-hash{font-family:var(--font-mono);font-size:.65rem;color:var(--text-hash);opacity:.55;transition:opacity .2s}
   .git-row:hover .cc-hash{opacity:1}
+  .cc-toggle{
+    font-family:var(--font-mono);
+    font-size:.58rem;
+    letter-spacing:.05em;
+    text-transform:uppercase;
+    color:var(--text-lo);
+    opacity:.78;
+    user-select:none;
+  }
+  .cc-toggle::before{content:'+'}
+  .cc-toggle::after{content:'expand';padding-left:.1rem}
+  .git-row.open .cc-toggle::before{content:'-'}
+  .git-row.open .cc-toggle::after{content:'collapse'}
   .cc-date{font-family:var(--font-mono);font-size:.65rem;color:var(--text-lo)}
   .cc-org{font-family:var(--font-mono);font-size:.68rem;color:var(--text-lo);margin:.3rem 0 0}
-  .cc-org b{color:var(--text-mid);font-weight:400}
   .cc-body{height:0;overflow:hidden;opacity:0;transition:height .42s var(--ease),opacity .28s var(--ease);will-change:height,opacity}
   .git-row.open .cc-body{opacity:1}
   .cc-msg{font-size:.85rem;line-height:1.75;color:var(--text-mid);margin-top:.7rem;padding-top:.7rem;border-top:1px solid var(--border);list-style:none;display:flex;flex-direction:column;gap:.35rem}
@@ -189,7 +221,7 @@
 </details>
 
 <details class="fold" id="historyFold" open>
-  <summary class="sdiv"><div class="sdiv-inner">commit history</div></summary>
+  <summary class="sdiv"><div class="sdiv-inner"><span class="sdiv-label">commit history</span><span id="historyBranch" class="sdiv-right"></span></div></summary>
   <div class="fold-body">
     <div class="fold-inner">
       <main class="git-log" id="gitLog"></main>
@@ -207,6 +239,7 @@ const DOT_R = 5;
 const COLORS = ['--c0','--c1','--c2','--c3'];
 
 let COMMITS = [];
+let MARKER_LABELS = new Map();
 let rowEls = [];
 let svgW = 64;
 let observer;
@@ -252,6 +285,65 @@ function markerSpacingClass(commit) {
   if (commit.event === 'fork' || commit.card?.kind === 'fork') return 'marker-join';
   if (commit.event === 'merge' || commit.card?.kind === 'merge') return 'marker-leave';
   return '';
+}
+
+function markerEntityName(rawTitle, fallbackOrg) {
+  const cleaned = (rawTitle || fallbackOrg || '')
+    .replace(/^Join\s+/i, '')
+    .replace(/^Leave\s+/i, '')
+    .replace(/^Begin education at\s+/i, '')
+    .replace(/^Complete education at\s+/i, '')
+    .trim();
+  return cleaned || fallbackOrg || 'Transition';
+}
+
+function formatCommitMonthYear(rawDate) {
+  const value = (rawDate || '').trim();
+  const toCapitalCaseMonth = month => month.charAt(0).toUpperCase() + month.slice(1).toLowerCase();
+  const monthYearMatch = value.match(/^([A-Za-z]{3})\s+(\d{4})$/);
+  if (monthYearMatch) return `${toCapitalCaseMonth(monthYearMatch[1])} ${monthYearMatch[2]}`;
+
+  const yearMatch = value.match(/^(\d{4})$/);
+  if (yearMatch) return `Jan ${yearMatch[1]}`;
+
+  const firstYear = value.match(/(19|20)\d{2}/);
+  if (firstYear) return `Jan ${firstYear[0]}`;
+
+  return 'Jan 0000';
+}
+
+function computeMarkerLabels(commits) {
+  const labels = new Map();
+  const openForkByLane = new Map();
+
+  commits.forEach(commit => {
+    if (!isMarkerCommit(commit)) return;
+
+    if (commit.event === 'fork') {
+      const childLane = commit.forkToLane;
+      if (typeof childLane !== 'number') return;
+      if (!openForkByLane.has(childLane)) openForkByLane.set(childLane, []);
+      openForkByLane.get(childLane).push(commit);
+      return;
+    }
+
+    if (commit.event === 'merge') {
+      const childLane = commit.mergeFromLane;
+      const stack = openForkByLane.get(childLane);
+      if (!stack || !stack.length) return;
+
+      const forkCommit = stack.pop();
+      const entity = markerEntityName(forkCommit.card?.title, forkCommit.card?.org || commit.card?.org);
+      const startDate = forkCommit.card?.date ? formatCommitMonthYear(forkCommit.card.date) : '';
+      const endDate = commit.card?.date ? formatCommitMonthYear(commit.card.date) : '';
+      const dateRange = startDate && endDate ? `${startDate} - ${endDate}` : (startDate || endDate || '');
+      const label = dateRange ? `${entity} \u00b7 ${dateRange}` : entity;
+
+      labels.set(commit.id, label);
+    }
+  });
+
+  return labels;
 }
 
 function maxLanes() {
@@ -392,24 +484,24 @@ function buildCard(commit) {
     div.classList.add('commit-card-marker');
     const spacingClass = markerSpacingClass(commit);
     if (spacingClass) div.classList.add(spacingClass);
-    div.innerHTML = `
-      <div class="cc-head">
-        <div class="cc-title-wrap"><div class="cc-title">${card.title}</div></div>
-        <div class="cc-meta"><span class="cc-date">${card.date}</span></div>
-      </div>`;
+    const markerLabel = MARKER_LABELS.get(commit.id);
+    if (!markerLabel) {
+      div.innerHTML = '<div class="cc-marker-spacer" aria-hidden="true"></div>';
+      return div;
+    }
+    div.innerHTML = `<div class="cc-head"><div class="cc-title-wrap"><div class="cc-title cc-marker-label">${markerLabel}</div></div></div>`;
     return div;
   }
 
   const bullets = card.bullets.map(b => `<li>${b}</li>`).join('');
   const tags = card.tags.map(t => `<span class="tag">${t}</span>`).join('');
-  const badge = card.kind ? `<span class="cc-badge cc-badge-${card.kind}">${card.kind.toUpperCase()}</span>` : '';
-
+  const commitStamp = `@cssetian committed ${formatCommitMonthYear(card.date)}`;
   div.innerHTML = `
     <div class="cc-head">
-      <div class="cc-title-wrap">${badge}<div class="cc-title">${card.title}</div></div>
-      <div class="cc-meta"><span class="cc-hash">${card.hash}</span><span class="cc-date">${card.date}</span></div>
+      <div class="cc-title-wrap"><div class="cc-title">${card.title}</div></div>
+      <div class="cc-meta"><span class="cc-hash">${card.hash}</span><span class="cc-toggle" aria-hidden="true"></span></div>
     </div>
-    ${card.org ? `<div class="cc-org">@ <b>${card.org}</b></div>` : ''}
+    <div class="cc-org">${commitStamp}</div>
     <div class="cc-body">
       <ul class="cc-msg">${bullets}</ul>
       ${tags ? `<div class="tags">${tags}</div>` : ''}
@@ -442,7 +534,7 @@ function renderHero(hero) {
 
   const heroMeta = document.getElementById('heroMeta');
   heroMeta.innerHTML = '';
-  hero.meta.forEach(item => {
+  hero.meta.filter(item => !/HEAD/i.test(item)).forEach(item => {
     const span = document.createElement('span');
     span.innerHTML = item;
     heroMeta.appendChild(span);
@@ -455,6 +547,25 @@ function renderHero(hero) {
     wrapper.innerHTML = `<div class="stat-v">${stat.value}</div><div class="stat-l">${stat.label}</div>`;
     heroStats.appendChild(wrapper);
   });
+}
+
+function renderHistoryBranch(hero) {
+  const el = document.getElementById('historyBranch');
+  if (!el) return;
+
+  const headMeta = (hero?.meta || []).find(item => /HEAD/i.test(item));
+  if (!headMeta) {
+    el.textContent = '';
+    return;
+  }
+
+  const text = headMeta
+    .replace(/<[^>]+>/g, '')
+    .replace(/\s*→\s*/g, ' -> ')
+    .replace(/\s+/g, ' ')
+    .trim();
+
+  el.textContent = text;
 }
 
 function renderSkills(skills) {
@@ -503,6 +614,7 @@ function renderFooter(footer) {
 function renderCommits(commits) {
   // Data is stored earliest -> latest; render latest -> earliest.
   // Keep event semantics and apply reverse-time geometry in drawAll().
+  MARKER_LABELS = computeMarkerLabels(commits);
   COMMITS = [...commits].reverse();
   const log = document.getElementById('gitLog');
   log.innerHTML = '';
@@ -593,6 +705,7 @@ async function init() {
     document.title = content.pageTitle || 'git log';
     renderHeader(content.header);
     renderHero(content.hero);
+    renderHistoryBranch(content.hero);
     renderSkills(content.skills);
     renderFooter(content.footer);
     renderCommits(content.commits);
