@@ -20,7 +20,7 @@
         "target": "_blank"
       },
       {
-        "label": "\u2193 resume.pdf",
+        "label": "↓ resume.pdf",
         "href": "resume.pdf",
         "target": "_blank",
         "className": "btn"
@@ -33,7 +33,7 @@
     "subtitle": "Engineering Leader / Former CTO",
     "meta": [
       "author <b>Christopher Setian &lt;chris.setian@gmail.com&gt;</b>",
-      "HEAD \u2192 <b style=\"color:var(--c0)\">main</b>",
+      "HEAD → <b style=\"color:var(--c0)\">main</b>",
       "based in <b>San Francisco, CA</b>"
     ],
     "stats": [
@@ -61,28 +61,36 @@
   },
   "skills": [
     {
-      "label": "Frontend",
+      "label": "Technologies",
       "chips": [
-        "Geospatial Visualization Systems"
+        "Next.js",
+        "TypeScript",
+        "Python",
+        "Postgres",
+        "GCP",
+        "Vercel",
+        "React",
+        "Tailwind",
+        "RAG",
+        "Elasticsearch",
+        "Vector Databases",
+        "Vercel AI SDK",
+        "Inference Architecture"
       ]
     },
     {
-      "label": "Backend / Platform",
+      "label": "Architecture / Platform",
       "chips": [
-        "Full-stack Platform Engineering",
-        "API and SDK Platform",
+        "Full-stack Development",
+        "API and SDK Design",
         "Data Ingestion and ETL",
-        "Workflow Automation"
-      ]
-    },
-    {
-      "label": "AI / ML Product",
-      "chips": [
-        "AI Product Strategy",
+        "Workflow Automation",
         "LLM Platform Architecture",
         "Model Evaluation",
         "Active Learning",
-        "AI Search Optimization (AEO)"
+        "Search Infrastructure",
+        "Geospatial Visualization",
+        "AI Search Optimization"
       ]
     },
     {
@@ -103,7 +111,7 @@
     "segments": [
       {
         "type": "text",
-        "value": "\u00a9 2026 Christopher Setian"
+        "value": "© 2026 Christopher Setian"
       },
       {
         "type": "link",
@@ -383,7 +391,7 @@
       "card": {
         "title": "Join Credit Suisse",
         "hash": "3a4b5c6",
-        "date": "2011",
+        "date": "AUG 2011",
         "org": "Credit Suisse",
         "accent": "--c1",
         "bullets": [
@@ -406,7 +414,7 @@
       "card": {
         "title": "Technical Analyst (2011-2013)",
         "hash": "3b4c5d6",
-        "date": "2011",
+        "date": "AUG 2011",
         "org": "Credit Suisse",
         "accent": "--c1",
         "bullets": [
@@ -430,7 +438,7 @@
       "card": {
         "title": "Leave Credit Suisse",
         "hash": "3c4d5e6",
-        "date": "2013",
+        "date": "AUG 2013",
         "org": "Credit Suisse",
         "accent": "--c1",
         "bullets": [
@@ -454,7 +462,7 @@
       "card": {
         "title": "Join The Blackstone Group",
         "hash": "4a5b6c7",
-        "date": "2013",
+        "date": "AUG 2013",
         "org": "The Blackstone Group",
         "accent": "--c1",
         "bullets": [
@@ -477,7 +485,7 @@
       "card": {
         "title": "Software Engineer (2013-2015)",
         "hash": "4b5c6d7",
-        "date": "2013",
+        "date": "AUG 2013",
         "org": "The Blackstone Group",
         "accent": "--c1",
         "bullets": [
@@ -501,7 +509,7 @@
       "card": {
         "title": "Leave The Blackstone Group",
         "hash": "4c5d6e7",
-        "date": "2015",
+        "date": "MAY 2015",
         "org": "The Blackstone Group",
         "accent": "--c1",
         "bullets": [
@@ -525,7 +533,7 @@
       "card": {
         "title": "Join PlanGrid",
         "hash": "5a6b7c8",
-        "date": "2015",
+        "date": "MAY 2015",
         "org": "PlanGrid",
         "accent": "--c1",
         "bullets": [
@@ -548,7 +556,7 @@
       "card": {
         "title": "Software Engineer (2015-2018)",
         "hash": "5b6c7d8",
-        "date": "2015",
+        "date": "MAY 2015",
         "org": "PlanGrid",
         "accent": "--c1",
         "bullets": [
@@ -574,7 +582,7 @@
       "card": {
         "title": "Leave PlanGrid",
         "hash": "5c6d7e8",
-        "date": "2018",
+        "date": "JUN 2018",
         "org": "PlanGrid",
         "accent": "--c1",
         "bullets": [
@@ -598,7 +606,7 @@
       "card": {
         "title": "Join GM Cruise",
         "hash": "6a7b8c9",
-        "date": "2018",
+        "date": "AUG 2018",
         "org": "GM Cruise",
         "accent": "--c2",
         "bullets": [
@@ -621,7 +629,7 @@
       "card": {
         "title": "Senior Software Engineer, Cartographer (2018-2020)",
         "hash": "6b7c8d9",
-        "date": "2018",
+        "date": "AUG 2018",
         "org": "GM Cruise",
         "accent": "--c2",
         "bullets": [
@@ -648,7 +656,7 @@
       "card": {
         "title": "Engineering Manager, Maps Engineering (2020-2021)",
         "hash": "6c7d8e9",
-        "date": "2020",
+        "date": "JAN 2020",
         "org": "GM Cruise",
         "accent": "--c2",
         "bullets": [
@@ -678,7 +686,7 @@
       "card": {
         "title": "Leave GM Cruise",
         "hash": "6d7e8f9",
-        "date": "2021",
+        "date": "JAN 2021",
         "org": "GM Cruise",
         "accent": "--c2",
         "bullets": [
@@ -702,7 +710,7 @@
       "card": {
         "title": "Join Labelbox",
         "hash": "7a8b9c0",
-        "date": "2021",
+        "date": "FEB 2021",
         "org": "Labelbox",
         "accent": "--c1",
         "bullets": [
@@ -725,7 +733,7 @@
       "card": {
         "title": "Engineering Manager (2021)",
         "hash": "7b8c9d0",
-        "date": "2021",
+        "date": "FEB 2021",
         "org": "Labelbox",
         "accent": "--c1",
         "bullets": [
@@ -754,7 +762,7 @@
       "card": {
         "title": "Senior Engineering Manager (2021-2022)",
         "hash": "7c8d9e0",
-        "date": "2021",
+        "date": "OCT 2021",
         "org": "Labelbox",
         "accent": "--c1",
         "bullets": [
@@ -781,7 +789,7 @@
       "card": {
         "title": "Director of Engineering, Active Learning (2022-2023)",
         "hash": "7d8e9f0",
-        "date": "2022",
+        "date": "DEC 2022",
         "org": "Labelbox",
         "accent": "--c1",
         "bullets": [
@@ -809,7 +817,7 @@
       "card": {
         "title": "Leave Labelbox",
         "hash": "7e9f0a1",
-        "date": "2023",
+        "date": "AUG 2023",
         "org": "Labelbox",
         "accent": "--c1",
         "bullets": [
@@ -833,7 +841,7 @@
       "card": {
         "title": "Join Concierge AI",
         "hash": "8a9b0c1",
-        "date": "2023",
+        "date": "AUG 2023",
         "org": "Concierge AI",
         "accent": "--c0",
         "bullets": [
@@ -857,7 +865,7 @@
       "card": {
         "title": "Co-Founder & Chief Technology Officer (2023-2026)",
         "hash": "8b0c1d2",
-        "date": "2023",
+        "date": "AUG 2023",
         "org": "Concierge AI",
         "accent": "--c0",
         "bullets": [
@@ -891,7 +899,7 @@
       "card": {
         "title": "Leave Concierge AI",
         "hash": "8c1d2e3",
-        "date": "2026",
+        "date": "FEB 2026",
         "org": "Concierge AI",
         "accent": "--c0",
         "bullets": [

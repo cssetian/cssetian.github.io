@@ -8,16 +8,16 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500&family=DM+Serif+Display:ital@0;1&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
 <style>
-  :root {
-    --bg:#0d0f12; --bg-card:#13161b; --bg-hover:#181c23;
-    --border:#1f2430; --border-lt:#2a3040;
-    --text-hi:#e8eaf0; --text-mid:#8892a4; --text-lo:#4a5568; --text-hash:#4fc3f7;
-    --c0:#7ee787; --c1:#d2a8ff; --c2:#ffa657; --c3:#79c0ff;
-    --font-mono:'JetBrains Mono', monospace;
-    --font-display:'DM Serif Display', serif;
-    --font-sans:'DM Sans', sans-serif;
-    --ease:cubic-bezier(0.16,1,0.3,1);
-  }
+:root {
+  --bg:#070a11; --bg-card:#101a2b; --bg-hover:#132033;
+  --border:#23344d; --border-lt:#2c4363;
+  --text-hi:#e8eef8; --text-mid:#9baac1; --text-lo:#7c8aa1; --text-hash:#8b93ff;
+  --c0:#67e8b1; --c1:#8b93ff; --c2:#ffc67a; --c3:#5ec8ff;
+  --font-mono:'JetBrains Mono', monospace;
+  --font-display:'DM Serif Display', serif;
+  --font-sans:'DM Sans', sans-serif;
+  --ease:cubic-bezier(0.16,1,0.3,1);
+}
 
   *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
   html{scroll-behavior:smooth}
@@ -45,7 +45,7 @@
 
   .hero{max-width:920px;margin:0 auto;padding:5rem 2rem 3rem;animation:fadeUp .8s var(--ease) both}
   .hero-tag{font-family:var(--font-mono);font-size:.7rem;color:var(--c0);letter-spacing:.08em;text-transform:uppercase;margin-bottom:.9rem;opacity:.85}
-  .hero-name{font-family:var(--font-display);font-size:clamp(2.6rem,5.5vw,4.8rem);line-height:1.06;letter-spacing:-.02em}
+  .hero-name{font-family:var(--font-display);font-size:clamp(2.6rem,5.5vw,4.8rem);line-height:1.06;letter-spacing:.01em;font-weight:600}
   .hero-name em{
     display:block;
     margin-top:.62rem;
@@ -68,6 +68,13 @@
   .sdiv{max-width:920px;margin:0 auto;padding:0 2rem}
   .sdiv-inner{font-family:var(--font-mono);font-size:.65rem;color:var(--text-lo);text-transform:uppercase;letter-spacing:.1em;padding:1.2rem 0 .6rem;border-top:1px solid var(--border);display:flex;align-items:center;gap:.75rem}
   .sdiv-inner::after{content:'';flex:1;height:1px;background:var(--border)}
+  .fold>summary{list-style:none;cursor:pointer}
+  .fold>summary::-webkit-details-marker{display:none}
+  .fold>summary .sdiv-inner::before{content:'+';font-family:var(--font-mono);color:var(--text-lo)}
+  .fold[open]>summary .sdiv-inner::before{content:'-'}
+  .fold-body{display:grid;grid-template-rows:0fr;transition:grid-template-rows .28s var(--ease)}
+  .fold[open] .fold-body{grid-template-rows:1fr}
+  .fold-inner{overflow:hidden}
 
   .git-log{max-width:920px;margin:0 auto;padding:0 2rem 6rem}
   .git-row{display:grid;grid-template-columns:var(--graph-col,56px) 1fr;align-items:start;position:relative;opacity:0;transform:translateY(14px);transition:opacity .45s var(--ease),transform .45s var(--ease)}
@@ -76,13 +83,13 @@
   .graph-svg-wrap svg{position:absolute;top:0;left:0;width:100%;height:100%;overflow:visible}
 
   .commit-card{margin:4px 0 4px 14px;padding:.9rem 1.1rem;background:var(--bg-card);border:1px solid var(--border);border-radius:8px;cursor:pointer;transition:background .2s,border-color .2s;position:relative;overflow:hidden}
-  .commit-card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;border-radius:8px 0 0 8px;background:var(--accent,var(--c0));opacity:0;transition:opacity .2s}
+  .commit-card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;border-radius:8px 0 0 8px;background:var(--text-hash);opacity:0;transition:opacity .2s}
   .git-row:hover .commit-card{background:var(--bg-hover);border-color:var(--border-lt)}
   .git-row:hover .commit-card::before{opacity:1}
   .commit-card-role{border-color:var(--border-lt)}
   .git-row:hover .commit-card-role::before{opacity:1}
   .commit-card-marker{
-    padding:.45rem .8rem;
+    padding:.45rem 1.1rem .45rem .8rem;
     background:var(--bg-card);
     border-color:var(--border);
     border-style:dashed;
@@ -100,7 +107,7 @@
   .commit-card-marker .cc-date{font-size:.62rem}
   .cc-head{display:flex;align-items:flex-start;justify-content:space-between;gap:.75rem}
   .cc-title-wrap{display:flex;align-items:center;gap:.55rem;min-width:0}
-  .cc-title{font-family:var(--font-display);font-size:1rem;line-height:1.35}
+  .cc-title{font-family:var(--font-display);font-size:1rem;line-height:1.35;letter-spacing:.01em;font-weight:600}
   .cc-badge{
     font-family:var(--font-mono);
     font-size:.58rem;
@@ -115,9 +122,9 @@
     flex-shrink:0;
   }
   .cc-badge-role{
-    background:rgba(126,231,135,.22);
-    border-color:rgba(126,231,135,.7);
-    color:#dfffe5;
+    background:transparent;
+    border-color:var(--text-hash);
+    color:var(--text-hash);
   }
   .cc-meta{display:flex;align-items:center;gap:.6rem;flex-shrink:0}
   .cc-hash{font-family:var(--font-mono);font-size:.65rem;color:var(--text-hash);opacity:.55;transition:opacity .2s}
@@ -133,7 +140,7 @@
   .tags{display:flex;flex-wrap:wrap;gap:.35rem;margin-top:.7rem}
   .tag{font-family:var(--font-mono);font-size:.6rem;padding:.18rem .45rem;border-radius:3px;border:1px solid var(--border-lt);color:var(--text-lo)}
 
-  .skills{max-width:920px;margin:0 auto;padding:0 2rem 2rem;display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:.9rem}
+  .skills{max-width:920px;margin:0 auto;padding:0 2rem 2rem;display:grid;grid-template-columns:1fr 1fr 2fr;gap:.9rem}
   .sk-group{background:var(--bg-card);border:1px solid var(--border);border-radius:8px;padding:.9rem}
   .sk-label{font-family:var(--font-mono);font-size:.62rem;color:var(--text-lo);text-transform:uppercase;letter-spacing:.08em;margin-bottom:.5rem}
   .sk-chips{display:flex;flex-wrap:wrap;gap:.3rem}
@@ -147,6 +154,7 @@
   @keyframes fadeUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
   @media(max-width:600px){
     .hero-name{font-size:2.3rem}.stats{gap:1.25rem}.cc-head{flex-direction:column;gap:.2rem}
+    .skills{grid-template-columns:1fr}
     header,.git-log,.hero,.sdiv,.skills{padding-left:1rem;padding-right:1rem}
     .h-nav a:not(.btn){display:none}
   }
@@ -171,11 +179,23 @@
   <div class="stats" id="heroStats"></div>
 </section>
 
-<div class="sdiv"><div class="sdiv-inner">tech stack</div></div>
-<section class="skills" id="skills"></section>
+<details class="fold" id="skillsFold">
+  <summary class="sdiv"><div class="sdiv-inner">skill tags</div></summary>
+  <div class="fold-body">
+    <div class="fold-inner">
+      <section class="skills" id="skills"></section>
+    </div>
+  </div>
+</details>
 
-<div class="sdiv"><div class="sdiv-inner">commit history</div></div>
-<main class="git-log" id="gitLog"></main>
+<details class="fold" id="historyFold" open>
+  <summary class="sdiv"><div class="sdiv-inner">commit history</div></summary>
+  <div class="fold-body">
+    <div class="fold-inner">
+      <main class="git-log" id="gitLog"></main>
+    </div>
+  </div>
+</details>
 
 <footer>
   <div class="foot-inner" id="footerInner"></div>
@@ -550,6 +570,16 @@ function renderCommits(commits) {
   requestAnimationFrame(drawAll);
 }
 
+function initSectionFolds() {
+  const historyFold = document.getElementById('historyFold');
+  if (!historyFold) return;
+
+  historyFold.addEventListener('toggle', () => {
+    if (!historyFold.open) return;
+    requestAnimationFrame(drawAll);
+  });
+}
+
 async function loadSiteContent() {
   const buildTs = new Date(document.lastModified || Date.now()).toISOString();
   const response = await fetch(`data/site-content.json?v=${encodeURIComponent(buildTs)}`, { cache: 'no-store' });
@@ -566,6 +596,7 @@ async function init() {
     renderSkills(content.skills);
     renderFooter(content.footer);
     renderCommits(content.commits);
+    initSectionFolds();
   } catch (error) {
     console.error(error);
     const log = document.getElementById('gitLog');
