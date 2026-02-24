@@ -551,7 +551,8 @@ function renderCommits(commits) {
 }
 
 async function loadSiteContent() {
-  const response = await fetch('data/site-content.json', { cache: 'no-store' });
+  const buildTs = new Date(document.lastModified || Date.now()).toISOString();
+  const response = await fetch(`data/site-content.json?v=${encodeURIComponent(buildTs)}`, { cache: 'no-store' });
   if (!response.ok) throw new Error(`Failed to load content JSON (${response.status})`);
   return response.json();
 }
