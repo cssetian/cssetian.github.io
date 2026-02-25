@@ -43,7 +43,7 @@
   .h-nav .btn{padding:.3rem .8rem;border:1px solid var(--c0);color:var(--c0)!important;border-radius:4px;transition:background .2s!important;white-space:nowrap;flex-shrink:0}
   .h-nav .btn:hover{background:rgba(126,231,135,.08)}
 
-  .hero{max-width:920px;margin:0 auto;padding:5rem 2rem 3rem;animation:fadeUp .8s var(--ease) both}
+  .hero{max-width:920px;margin:0 auto;padding:5rem 2rem 1.5rem;animation:fadeUp .8s var(--ease) both}
   .hero-tag{font-family:var(--font-mono);font-size:.7rem;color:var(--c0);letter-spacing:.08em;text-transform:uppercase;margin-bottom:.9rem;opacity:.85}
   .hero-name{font-family:var(--font-display);font-size:clamp(2.6rem,5.5vw,4.8rem);line-height:1.06;letter-spacing:.01em;font-weight:600}
   .hero-name em{
@@ -58,20 +58,27 @@
     color:var(--text-lo);
     opacity:.72;
   }
-  .hero-meta{display:flex;flex-wrap:wrap;gap:1.25rem;margin-top:1.4rem}
-  .hero-meta span{font-family:var(--font-mono);font-size:.78rem;color:var(--text-lo)}
-  .hero-meta span b{color:var(--text-mid);font-weight:400}
+  .hero-meta{display:flex;flex-wrap:wrap;gap:1.25rem;margin-top:1.05rem}
+  .hero-meta span{font-family:var(--font-mono);font-size:.78rem;color:var(--text-lo);opacity:.8}
+  .hero-meta span b{color:var(--text-mid);font-weight:500;opacity:1}
   .hero-summary{
-    margin-top:1rem;
-    max-width:76ch;
+    margin-top:1.25rem;
+    max-width:none;
+    width:100%;
+    padding:.85rem 1rem;
+    background:rgba(19,32,51,.35);
+    border-left:2px solid var(--border-lt);
+    border-radius:6px;
     color:var(--text-mid);
     font-size:.98rem;
-    line-height:1.65;
+    line-height:1.72;
     letter-spacing:.002em;
   }
   .stats{display:flex;flex-wrap:wrap;gap:2rem;margin-top:2rem;padding-top:2rem;border-top:1px solid var(--border)}
   .stat-v{font-family:var(--font-display);font-size:1.75rem;line-height:1}
   .stat-l{font-family:var(--font-mono);font-size:.7rem;color:var(--text-lo);text-transform:uppercase;letter-spacing:.06em}
+  .hero-stats{max-width:920px;margin:0 auto;padding:0 2rem 1.5rem}
+  .hero-stats .stats{margin-top:0;padding-top:0;border-top:none;justify-content:space-between}
 
   .sdiv{max-width:920px;margin:0 auto;padding:0 2rem}
   .sdiv-inner{
@@ -82,10 +89,10 @@
     text-transform:uppercase;
     letter-spacing:.12em;
     padding:1.5rem 0 .78rem;
-    border-top:1px solid var(--border-lt);
     display:flex;
     align-items:center;
     gap:.82rem;
+    transition:color .2s, border-color .2s, background .2s, box-shadow .2s;
   }
   .sdiv-label{white-space:nowrap}
   .sdiv-right{
@@ -103,11 +110,22 @@
   .fold>summary::-webkit-details-marker{display:none}
   .fold>summary .sdiv-inner::before{content:'+';font-family:var(--font-mono);color:var(--text-lo)}
   .fold[open]>summary .sdiv-inner::before{content:'-'}
+  .fold>summary:hover .sdiv-inner,
+  .fold>summary:focus-visible .sdiv-inner{
+    color:var(--text-hi);
+    background:rgba(19,32,51,.25);
+  }
+  .fold>summary:hover .sdiv-inner::after,
+  .fold>summary:focus-visible .sdiv-inner::after{background:var(--text-mid)}
+  .fold>summary:hover .sdiv-inner::before,
+  .fold>summary:focus-visible .sdiv-inner::before{color:var(--c0)}
+  .fold>summary:hover .sdiv-right,
+  .fold>summary:focus-visible .sdiv-right{color:var(--text-hi)}
   .fold-body{display:grid;grid-template-rows:0fr;transition:grid-template-rows .28s var(--ease)}
   .fold[open] .fold-body{grid-template-rows:1fr}
   .fold-inner{overflow:hidden}
 
-  .git-log{max-width:920px;margin:0 auto;padding:0 2rem 6rem}
+  .git-log{max-width:920px;margin:0 auto;padding:0 2rem 5.5rem}
   .git-row{display:grid;grid-template-columns:var(--graph-col,56px) 1fr;align-items:start;position:relative;opacity:0;transform:translateY(14px);transition:opacity .45s var(--ease),transform .45s var(--ease)}
   .git-row.vis{opacity:1;transform:none}
   .graph-svg-wrap{position:relative}
@@ -171,17 +189,30 @@
   .git-row:hover .cc-hash{opacity:1}
   .cc-toggle{
     font-family:var(--font-mono);
-    font-size:.68rem;
-    letter-spacing:.05em;
-    text-transform:uppercase;
-    color:var(--text-lo);
-    opacity:.78;
+    font-size:.66rem;
+    letter-spacing:.03em;
+    text-transform:none;
+    color:var(--text-mid);
+    opacity:1;
+    display:inline-flex;
+    align-items:center;
+    gap:.22rem;
+    padding:.24rem .5rem;
+    border:1px solid var(--border-lt);
+    border-radius:999px;
+    background:rgba(19,32,51,.55);
     user-select:none;
+    transition:color .2s, border-color .2s, background .2s;
   }
   .cc-toggle::before{content:'+'}
-  .cc-toggle::after{content:'expand';padding-left:.1rem}
+  .cc-toggle::after{content:'Expand'}
   .git-row.open .cc-toggle::before{content:'-'}
-  .git-row.open .cc-toggle::after{content:'collapse'}
+  .git-row.open .cc-toggle::after{content:'Collapse'}
+  .git-row:hover .cc-toggle{
+    color:var(--text-hi);
+    border-color:var(--text-mid);
+    background:rgba(19,32,51,.8);
+  }
   .cc-date{font-family:var(--font-mono);font-size:.72rem;color:var(--text-lo)}
   .cc-org{font-family:var(--font-mono);font-size:.74rem;color:var(--text-lo);margin:.5rem 0 0}
   .cc-body{height:0;overflow:hidden;opacity:0;transition:height .42s var(--ease),opacity .28s var(--ease);will-change:height,opacity}
@@ -192,7 +223,7 @@
   .tags{display:flex;flex-wrap:wrap;gap:.35rem;margin-top:.7rem}
   .tag{font-family:var(--font-mono);font-size:.67rem;padding:.2rem .5rem;border-radius:3px;border:1px solid var(--border-lt);color:var(--text-lo)}
 
-  .skills{max-width:920px;margin:0 auto;padding:0 2rem 2rem;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.9rem}
+  .skills{max-width:920px;margin:0 auto;padding:0 2rem 1.5rem;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.9rem}
   .sk-group{background:var(--bg-card);border:1px solid var(--border);border-radius:8px;padding:.9rem}
   .sk-label{font-family:var(--font-mono);font-size:.68rem;color:var(--text-lo);text-transform:uppercase;letter-spacing:.08em;margin-bottom:.5rem}
   .sk-chips{display:flex;flex-wrap:wrap;gap:.3rem}
@@ -250,8 +281,18 @@
   <h1 class="hero-name" id="heroName"></h1>
   <div class="hero-meta" id="heroMeta"></div>
   <p class="hero-summary" id="heroSummary"></p>
-  <div class="stats" id="heroStats"></div>
 </section>
+
+<details class="fold" id="statsFold" open>
+  <summary class="sdiv"><div class="sdiv-inner"><span class="sdiv-label">Topline Stats</span></div></summary>
+  <div class="fold-body">
+    <div class="fold-inner">
+      <section class="hero-stats">
+        <div class="stats" id="heroStats"></div>
+      </section>
+    </div>
+  </div>
+</details>
 
 <details class="fold" id="skillsFold">
   <summary class="sdiv"><div class="sdiv-inner">skill tags</div></summary>

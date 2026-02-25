@@ -166,8 +166,19 @@
         0,
         1
       ],
+      "date": "SEPT 2003",
       "event": "fork",
-      "forkToLane": 1
+      "forkToLane": 1,
+      "card": {
+        "title": "Thomas Jefferson High School for Science and Technology",
+        "hash": "3a4b5c6",
+        "date": "SEPT 2003",
+        "org": "Thomas Jefferson High School for Science and Technology",
+        "accent": "--c1",
+        "bullets": [],
+        "tags": [],
+        "kind": "fork"
+      }
     },
     {
       "id": "tjhsst-role",
@@ -178,10 +189,10 @@
       ],
       "event": null,
       "card": {
-        "title": "Student (2004-2007)",
+        "title": "High School (2003-2007)",
         "hash": "1b2c3d4",
         "date": "JUN 2007",
-        "org": "Thomas Jefferson High School for Science and Technology (2004-2007)",
+        "org": "Thomas Jefferson High School for Science and Technology",
         "accent": "--c3",
         "bullets": [
           "Graduated in 2007."
@@ -197,7 +208,17 @@
         0
       ],
       "event": "merge",
-      "mergeFromLane": 1
+      "mergeFromLane": 1,
+      "card": {
+        "title": "Thomas Jefferson High School for Science and Technology",
+        "hash": "3a4b5c6",
+        "date": "JUN 2007",
+        "org": "Thomas Jefferson High School for Science and Technology",
+        "accent": "--c1",
+        "bullets": [],
+        "tags": [],
+        "kind": "fork"
+      }
     },
     {
       "id": "fork-upenn",
@@ -207,7 +228,17 @@
         1
       ],
       "event": "fork",
-      "forkToLane": 1
+      "forkToLane": 1,
+      "card": {
+        "title": "University of Pennsylvania",
+        "hash": "3a4b5c6",
+        "date": "SEPT 2007",
+        "org": "University of Pennsylvania",
+        "accent": "--c1",
+        "bullets": [],
+        "tags": [],
+        "kind": "fork"
+      }
     },
     {
       "id": "upenn-bse-role",
